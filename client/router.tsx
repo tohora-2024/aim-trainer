@@ -1,12 +1,7 @@
-/* eslint-disable react/jsx-key */
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-} from 'react-router-dom'
-import App from './components/App'
-import Grid from './components/game-grid'
-import Home from './components/Home'
+import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+import App from './components/App';
+import Grid from './components/game-grid';
+import Home from './components/Home';
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -15,6 +10,6 @@ const router = createBrowserRouter(
       <Route path="classic" element={<Grid />} />
     </Route>,
   ]),
-)
+);
 
-export default router
+export default router;

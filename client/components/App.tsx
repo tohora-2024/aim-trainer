@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import Grid from '../components/game-grid'
-import CountdownTimer from '../components/Countdown'
+import React from 'react';
+import Grid from '../components/game-grid';
+import CountdownTimer from '../components/Countdown';
 
 function App() {
-  const gameDuration = 60000
-  const [gameStarted, setGameStarted] = useState(false)
+  const gameDuration = 60000;
+  const [gameStarted, setGameStarted] = React.useState(false);
 
   const startGame = () => {
-    setGameStarted(true)
-  }
+    setGameStarted(true);
+  };
 
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
         <Grid onStartGame={startGame} />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
