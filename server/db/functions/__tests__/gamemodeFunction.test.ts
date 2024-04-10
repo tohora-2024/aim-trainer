@@ -48,12 +48,32 @@ describe('addGameMode', () => {
 })
 
 describe('updateGameModeById', () => {
-  it('Should do', async () => {
+  it('Should update a specified entry based on its ID', async () => {
     // Arrange
-    const updatedGamemode = { name: 'test', time_left: '1:25' }
-    await db.updateGameModeById(2)
+    const allGamemodesBefore = await db.getAllGameModes()
+    const updatedGamemode = { name: 'test', timeLeft: '1:25' }
+    await db.updateGameModeById(2, updatedGamemode)
+
     // Act
+    const allGamemodesAfter = await db.getAllGameModes()
+
     // Assert
+    expect(allGamemodesBefore[1].name).toBe('Classic 2 Minute')
+    expect(allGamemodesAfter[1].name).toBe('test')
+  })
+})
+
+describe('deleteGameModeById', () => {
+  it('Should delete a Gamemode by ID', async () => {
+    // Arrange
+    await db.deleteGameModeById(3)
+
+    // Act
+    const allGamemodes = await db.getAllGameModes()
+
+    // Assert
+    expect(allGamemodes).toHaveLength(2)
+    expect(allGamemodes[2]).toBe(undefined)
   })
 })
 

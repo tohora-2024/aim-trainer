@@ -20,7 +20,7 @@ export async function addGameMode(
   })
 }
 
-export async function deleteGameMode(id: number): Promise<void> {
+export async function deleteGameModeById(id: number): Promise<void> {
   return await db('gamemode').where('id', id).delete()
 }
 
@@ -28,5 +28,8 @@ export async function updateGameModeById(
   id: number,
   updatedGameMode: GameModeData,
 ): Promise<GameModeData> {
-  return db('gamemode').where('id', id).update(updatedGameMode)
+  return db('gamemode').where('id', id).update({
+    name: updatedGameMode.name,
+    time_left: updatedGameMode.timeLeft,
+  })
 }

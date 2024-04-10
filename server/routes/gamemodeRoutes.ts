@@ -56,7 +56,7 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
-    await db.deleteGameMode(id)
+    await db.deleteGameModeById(id)
     res.sendStatus(200)
   } catch (error) {
     console.error('Error on delete game mode:', error)
