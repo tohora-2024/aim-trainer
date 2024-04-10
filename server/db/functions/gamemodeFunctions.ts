@@ -24,7 +24,7 @@ export async function deleteGameMode(id: number): Promise<void> {
   return await db('gamemode').where('id', id).delete()
 }
 
-export async function updateGameMode(
+export async function updateGameModeById(
   id: number,
   updatedGameMode: GameModeData,
 ): Promise<GameModeData> {

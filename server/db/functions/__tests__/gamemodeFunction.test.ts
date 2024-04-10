@@ -47,6 +47,16 @@ describe('addGameMode', () => {
   })
 })
 
+describe('updateGameModeById', () => {
+  it('Should do', async () => {
+    // Arrange
+    const updatedGamemode = { name: 'test', time_left: '1:25' }
+    await db.updateGameModeById(2)
+    // Act
+    // Assert
+  })
+})
+
 afterAll(() => {
   connection.destroy()
 })
