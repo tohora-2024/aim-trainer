@@ -1,13 +1,13 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import Grid from '../components/game-grid.tsx'
 
 function App() {
-  const { data } = useFruits()
-
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <h1>Aim Trainer</h1>
+      </div>
+      <div className="grid-container">
+        <Grid />
       </div>
     </>
   )
