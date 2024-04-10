@@ -11,7 +11,7 @@ export async function getGameModeById(id: number): Promise<GameMode> {
   return await db('gamemode').where('id', id).select().first()
 }
 
-export async function addGameMode(newGameMode: GameMode): Promise<GameMode> {
+export async function addGameMode(newGameMode: GameMode): Promise<GameMode[]> {
   return await db('gamemode').insert(newGameMode)
 }
 
