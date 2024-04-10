@@ -4,11 +4,25 @@ html,
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 15px;
   height: 100%;
 }
 
+.button-container {
+  position: absolute;
+  top: 5px; 
+  z-index: 1;
+}
+
+button {
+  padding: 5px;
+  margin: 0 5px 0 5px;
+  border-radius: 10px;
+  background-color: rgba(231, 229, 229, 0.541);
+}
+
 .grid-container {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
