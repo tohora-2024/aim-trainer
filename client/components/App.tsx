@@ -1,4 +1,6 @@
+import { Outlet } from 'react-router-dom'
 import Grid from '../components/game-grid.tsx'
+import Home from './Home.tsx'
 
 function App() {
   return (
@@ -7,7 +9,7 @@ function App() {
         <h1>Aim Trainer</h1>
       </div>
       <div className="grid-container">
-        <Grid />
+        <Outlet />
       </div>
     </>
   )

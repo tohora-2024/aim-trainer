@@ -12,7 +12,14 @@ function Grid() {
     }
   }
 
-  return <div className="grid-container">{gridCells}</div>
+  return (
+    <>
+      <div className="button-container">
+        <button>Home</button>
+      </div>
+      <div className="grid-container">{gridCells}</div>
+    </>
+  )
 }
 
 export default Grid
