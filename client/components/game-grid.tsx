@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '../styles/index.scss'
 
-function Grid() {
+interface GridProps {
+  onStartGame: () => void
+}
+
+function Grid({ onStartGame }: GridProps) {
   const numRows = 9
   const numCols = 10
   const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({
@@ -10,24 +13,11 @@ function Grid() {
     col: 0,
   })
 
-  const gridCells = []
-
-  for (let row = 0; row < numRows; row++) {
-    for (let col = 0; col < numCols; col++) {
-      const isTarget =
-        targetCell && targetCell.row === row && targetCell.col === col
-      const cellColor = isTarget ? '#000' : '#fff'
-      gridCells.push(
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-        <div
-          key={`${row}-${col}`}
-          className="grid-cell"
-          style={{ backgroundColor: cellColor }}
-          onClick={() => handleCellClick(row, col)}
-          tabIndex={0}
-          role="button"
-        ></div>,
-      )
+  const handleCellClick = (row: number, col: number) => {
+    if (targetCell.row === row && targetCell.col === col) {
+      const newTargetCell = getRandomCell()
+      setTargetCell(newTargetCell)
+      onStartGame()
     }
   }
 
@@ -37,23 +27,25 @@ function Grid() {
     return { row: randomRow, col: randomCol }
   }
 
-  const handleCellClick = (row: number, col: number) => {
-    if (targetCell.row === row && targetCell.col === col) {
-      const newTargetCell = getRandomCell()
-      setTargetCell(newTargetCell)
+  const gridCells = []
+
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols; col++) {
+      const isTarget =
+        targetCell && targetCell.row === row && targetCell.col === col
+      const cellColor = isTarget ? '#000' : '#fff'
+      gridCells.push(
+        <div
+          key={`${row}-${col}`}
+          className="grid-cell"
+          style={{ backgroundColor: cellColor }}
+          onClick={() => handleCellClick(row, col)}
+        ></div>,
+      )
     }
   }
 
-  return (
-    <>
-      <div className="button-container">
-        <button>
-          <Link to="/">Home</Link>
-        </button>
-      </div>
-      <div className="grid-container">{gridCells}</div>
-    </>
-  )
+  return <div className="grid-container">{gridCells}</div>
 }
 
 export default Grid
