@@ -43,6 +43,7 @@
     "@types/superagent": "^8.1.1",
     "@types/supertest": "^6.0.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.4.0",
     "esbuild": "^0.18.19",
     "eslint": "^8.10.0",
     "eslint-plugin-import": "^2.25.4",
