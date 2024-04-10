@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import '../styles/index.scss'
 
-const gameGrid = () => {
-  const [grid, setGrid] = useState([])
+function Grid() {
+  const numRows = 9
+  const numCols = 10
 
-  const rows = 25
-  const columns = 25
+  const gridCells = []
 
-  const initialGrid = []
-  for (let i = 0; i < rows; i++)
-    for (let u = 0; u < columns; u++) {
-      initialGrid.push({ row: i, columns: u, isTarget: false })
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < numCols; col++) {
+      gridCells.push(<div key={`${row}-${col}`} className="grid-cell"></div>)
     }
+  }
+
+  return <div className="grid-container">{gridCells}</div>
 }
+
+export default Grid

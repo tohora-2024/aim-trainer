@@ -1,6 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
-html, 
+html,
 body {
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-gap: 0.0625rem;
+  background-color: #ccc;
+  width: 95vw;
+  height: 95vh;
+  padding: 1rem;
+  margin-left: 10px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.grid-cell {
+  background-color: #fff;
+  border: 0.0625rem solid #000;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.grid-cell:hover {
+  background-color: lightblue;
 }
