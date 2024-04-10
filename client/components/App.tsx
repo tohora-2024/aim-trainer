@@ -1,6 +1,4 @@
 import { Outlet } from 'react-router-dom'
-import Grid from '../components/game-grid.tsx'
-import Home from './Home.tsx'
 
 function App() {
   return (

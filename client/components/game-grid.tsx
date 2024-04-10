@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../styles/index.scss'
 
 function Grid() {
@@ -15,7 +16,9 @@ function Grid() {
   return (
     <>
       <div className="button-container">
-        <button>Home</button>
+        <button>
+          <Link to="/">Home</Link>
+        </button>
       </div>
       <div className="grid-container">{gridCells}</div>
     </>
