@@ -1,5 +1,5 @@
 import connection from '../connection.ts'
-import { Player } from '../../../models/player.ts'
+import { Player, PlayerData } from '../../../models/player.ts'
 
 const db = connection
 
@@ -11,17 +11,27 @@ export async function getPlayerById(id: number): Promise<Player> {
   return await db('player').where('id', id).select().first()
 }
 
-export async function addPlayer(newPlayer: Player): Promise<Player> {
-  return await db('player').insert(newPlayer)
+export async function addPlayer(newPlayer: PlayerData): Promise<PlayerData> {
+  return await db('player').insert({
+    name: newPlayer.name,
+    score: newPlayer.score,
+    time_taken: newPlayer.time,
+    gamemode_id: newPlayer.gamemodeId,
+  })
 }
 
-export async function deletePlayer(id: number): Promise<void> {
+export async function deletePlayerById(id: number): Promise<void> {
   return await db('player').where('id', id).delete()
 }
 
-export async function updatePlayer(
+export async function updatePlayerById(
   id: number,
-  updatedPlayer: Partial<Player>,
-): Promise<Partial<Player>> {
-  return db('player').where('id', id).update(updatedPlayer)
+  updatedPlayer: PlayerData,
+): Promise<PlayerData> {
+  return db('player').where('id', id).update({
+    name: updatedPlayer.name,
+    score: updatedPlayer.score,
+    time_taken: updatedPlayer.time,
+    gamemode_id: updatedPlayer.gamemodeId,
+  })
 }

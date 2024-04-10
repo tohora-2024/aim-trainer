@@ -1,7 +1,6 @@
 import { it, expect, describe, beforeAll, beforeEach, afterAll } from 'vitest'
 import * as db from '../../functions/gamemodeFunctions'
 import connection from '../../connection'
-import { GameMode } from '../../../../models/gamemode'
 
 beforeAll(() => {
   return connection.migrate.latest()
@@ -13,10 +12,8 @@ beforeEach(async () => {
 
 describe('getAllGameModes', () => {
   it('Should get all gamemodes', async () => {
-    // Arrange / Act
     const allGamemodes = await db.getAllGameModes()
 
-    // Assert
     expect(allGamemodes).toHaveLength(3)
     expect(allGamemodes[0].id).toBe(1)
   })
@@ -24,10 +21,8 @@ describe('getAllGameModes', () => {
 
 describe('getGameModeById', () => {
   it('Should get a gamemode by id', async () => {
-    // Arrange / Act
     const gamemode = await db.getGameModeById(1)
 
-    // Assert
     expect(gamemode.name).toBe('Classic 1 Minute')
   })
 })

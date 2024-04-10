@@ -42,9 +42,9 @@ router.post('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
-    const { name, timeLeft } = req.body
-    const updatedPlayer = { name, timeLeft }
-    await db.updatePlayer(id, updatedPlayer)
+    const { name, score, time, gamemodeId } = req.body
+    const updatedPlayer = { name, score, time, gamemodeId }
+    await db.updatePlayerById(id, updatedPlayer)
   } catch (error) {
     console.error('Error on get update game mode', error)
     res.sendStatus(500).send('Something went wrong')
@@ -55,7 +55,7 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
-    await db.deletePlayer(id)
+    await db.deletePlayerById(id)
     res.sendStatus(200)
   } catch (error) {
     console.error('Error on delete game mode:', error)
