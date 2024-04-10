@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '../styles/index.scss'
 
@@ -17,11 +18,14 @@ function Grid() {
         targetCell && targetCell.row === row && targetCell.col === col
       const cellColor = isTarget ? '#000' : '#fff'
       gridCells.push(
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           key={`${row}-${col}`}
           className="grid-cell"
           style={{ backgroundColor: cellColor }}
           onClick={() => handleCellClick(row, col)}
+          tabIndex={0}
+          role="button"
         ></div>,
       )
     }
@@ -40,7 +44,16 @@ function Grid() {
     }
   }
 
-  return <div className="grid-container">{gridCells}</div>
+  return (
+    <>
+      <div className="button-container">
+        <button>
+          <Link to="/">Home</Link>
+        </button>
+      </div>
+      <div className="grid-container">{gridCells}</div>
+    </>
+  )
 }
 
 export default Grid

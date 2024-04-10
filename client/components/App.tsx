@@ -1,4 +1,4 @@
-import Grid from '../components/game-grid.tsx'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
         <h1>Aim Trainer</h1>
       </div>
       <div className="grid-container">
-        <Grid />
+        <Outlet />
       </div>
     </>
   )
