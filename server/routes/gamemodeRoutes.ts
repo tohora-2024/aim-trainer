@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     res.json(gamemode)
   } catch (error) {
     console.error('Error on get all gamemode:', error)
-    res.sendStatus(500).send('Something went wrong')
+    res.sendStatus(500)
   }
 })
 
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     res.json(gamemodeId)
   } catch (error) {
     console.error('Error on get gamemode by id:', error)
-    res.sendStatus(500).send('Something went wrong')
+    res.sendStatus(500)
   }
 })
 
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
     res.sendStatus(200)
   } catch (error) {
     console.error('Error on post game mode', error)
-    res.sendStatus(500).send('Something went wrong')
+    res.sendStatus(500)
   }
 })
 
@@ -48,7 +48,7 @@ router.patch('/:id', async (req, res) => {
     res.sendStatus(200)
   } catch (error) {
     console.error('Error on get update game mode', error)
-    res.sendStatus(500).send('Something went wrong')
+    res.sendStatus(500)
   }
 })
 
@@ -60,7 +60,7 @@ router.delete('/:id', async (req, res) => {
     res.sendStatus(200)
   } catch (error) {
     console.error('Error on delete game mode:', error)
-    res.sendStatus(500).send('Something went wrong')
+    res.sendStatus(500)
   }
 })
 
