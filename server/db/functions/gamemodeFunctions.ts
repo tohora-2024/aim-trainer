@@ -1,5 +1,5 @@
 import connection from '../connection.ts'
-import { GameMode } from '../../../models/gamemode.ts'
+import { GameMode, GameModeData } from '../../../models/gamemode.ts'
 
 const db = connection
 
@@ -11,8 +11,13 @@ export async function getGameModeById(id: number): Promise<GameMode> {
   return await db('gamemode').where('id', id).select().first()
 }
 
-export async function addGameMode(newGameMode: GameMode): Promise<GameMode[]> {
-  return await db('gamemode').insert(newGameMode)
+export async function addGameMode(
+  newGameMode: GameModeData,
+): Promise<GameModeData> {
+  return await db('gamemode').insert({
+    name: newGameMode.name,
+    time_left: newGameMode.timeLeft,
+  })
 }
 
 export async function deleteGameMode(id: number): Promise<void> {
@@ -21,7 +26,7 @@ export async function deleteGameMode(id: number): Promise<void> {
 
 export async function updateGameMode(
   id: number,
-  updatedGameMode: Partial<GameMode>,
-): Promise<Partial<GameMode>> {
+  updatedGameMode: GameModeData,
+): Promise<GameModeData> {
   return db('gamemode').where('id', id).update(updatedGameMode)
 }

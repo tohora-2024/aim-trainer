@@ -35,7 +35,7 @@ describe('getGameModeById', () => {
 describe('addGameMode', () => {
   it('Should add a singular gamemode', async () => {
     // Arrange
-    const newGamemode: GameMode = { id: 4, name: 'test', timeLeft: '1:25' }
+    const newGamemode = { id: 4, name: 'test', timeLeft: '1:25' }
     await db.addGameMode(newGamemode)
 
     // Act
