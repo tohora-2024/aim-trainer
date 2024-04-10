@@ -18,11 +18,14 @@ function Grid() {
         targetCell && targetCell.row === row && targetCell.col === col
       const cellColor = isTarget ? '#000' : '#fff'
       gridCells.push(
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           key={`${row}-${col}`}
           className="grid-cell"
           style={{ backgroundColor: cellColor }}
           onClick={() => handleCellClick(row, col)}
+          tabIndex={0}
+          role="button"
         ></div>,
       )
     }
