@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '../styles/index.scss'
 
@@ -40,7 +41,16 @@ function Grid() {
     }
   }
 
-  return <div className="grid-container">{gridCells}</div>
+  return (
+    <>
+      <div className="button-container">
+        <button>
+          <Link to="/">Home</Link>
+        </button>
+      </div>
+      <div className="grid-container">{gridCells}</div>
+    </>
+  )
 }
 
 export default Grid
