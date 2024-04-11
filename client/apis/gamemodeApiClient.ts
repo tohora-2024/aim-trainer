@@ -23,7 +23,7 @@ export async function deleteGameModeById(id: number) {
   return res.body
 }
 
-export async function updatedGameModeById(
+export async function updateGameModeById(
   id: number,
   newGameMode: GameModeData,
 ) {
