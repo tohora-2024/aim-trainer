@@ -6,44 +6,39 @@ interface GridProps {
   onStartGame: () => void;
 }
 
-interface CountdownTimerProps {
-  duration: number;
-}
-
-const CountdownTimer: React.FC<CountdownTimerProps> = ({ duration }) => {
-  const navigate = useNavigate();
-  const [timeLeft, setTimeLeft] = useState<number>(duration);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeLeft(prevTimeLeft => {
-        if (prevTimeLeft <= 0) {
-          clearInterval(interval);
-          navigate('/leaderboard');
-          return 0;
-        }
-        return prevTimeLeft - 1000;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60000);
-    const seconds = Math.floor((time % 60000) / 1000);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
-
-  return <div>{formatTime(timeLeft)}</div>;
-};
-
 const GameGrid: React.FC<GridProps> = ({ onStartGame }) => {
   const numRows = 9;
   const numCols = 10;
   const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({ row: 0, col: 0 });
+  const [timerStarted, setTimerStarted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number>(60000);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (timerStarted) {
+      interval = setInterval(() => {  
+        setTimeLeft(prevTimeLeft => {
+          if (prevTimeLeft <= 0) {
+            clearInterval(interval as NodeJS.Timeout);
+            navigate('/leaderboard');
+            return 0;
+          }
+          return prevTimeLeft - 1000;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [timerStarted, navigate]);
 
   const handleCellClick = (row: number, col: number) => {
+    if (!timerStarted) {
+      setTimerStarted(true);
+    }
     if (targetCell.row === row && targetCell.col === col) {
       const newTargetCell = getRandomCell();
       setTargetCell(newTargetCell);
@@ -74,11 +69,17 @@ const GameGrid: React.FC<GridProps> = ({ onStartGame }) => {
     }
   }
 
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60000);
+    const seconds = Math.floor((time % 60000) / 1000);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   return (
     <>
       <div className="app">
         <h1>Aim Trainer</h1>
-        <CountdownTimer duration={60000} />
+        <div>{formatTime(timeLeft)}</div>
       </div>
       <div className="grid-container">{gridCells}</div>
     </>
