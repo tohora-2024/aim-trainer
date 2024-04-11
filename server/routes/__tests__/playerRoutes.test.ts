@@ -162,11 +162,34 @@ describe('PATCH /api/v1/player/:id', () => {
       gamemode_id: 1,
     }
     await request(server).patch('/api/v1/player/2').send(patchDummyData)
-
     const res = await request(server).get('/api/v1/player')
 
-    // expect(res.body).toHaveLength(3)
-    expect(res.body).toMatchInlineSnapshot()
+    expect(res.body).toHaveLength(3)
+    expect(res.body).toMatchInlineSnapshot(`
+      [
+        {
+          "gamemode_id": 1,
+          "id": 1,
+          "name": "Joel",
+          "score": 1,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 1,
+          "id": 2,
+          "name": "PATCHED DATA",
+          "score": 100,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 1,
+          "id": 3,
+          "name": "Boston",
+          "score": 20,
+          "time_taken": "",
+        },
+      ]
+    `)
   })
 })
 
