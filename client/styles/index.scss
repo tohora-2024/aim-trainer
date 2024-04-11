@@ -14,6 +14,11 @@ body {
   z-index: 1;
 }
 
+.button-container p {
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 10px;
+}
 button {
   padding: 5px;
   margin: 0 5px 0 5px;
@@ -27,7 +32,7 @@ button {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   grid-gap: 0.0625rem;
-  background-color: #ccc;
+  background-color: transparent;
   width: 95vw;
   height: 95vh;
   padding: 1rem;
@@ -38,8 +43,8 @@ button {
 }
 
 .grid-cell {
-  background-color: #fff;
-  border: 0.0625rem solid #000;
+  background-color: transparent;
+  border: 0.0625rem solid transparent;
   width: 70px;
   height: 70px;
   justify-content: center;
@@ -47,12 +52,24 @@ button {
 }
 
 .grid-cell:hover {
-  background-color: lightblue;
+  background-color: transparent;
 }
 
 .hit-counter {
+
   padding: 0 3px 0 6px;
   position: absolute;
   top:0;
   left:0;
+}
+
+.time-container {
+
+  position: absolute;
+  top: 5px;
+  z-index: 1;
+  top:0;
+  left:0;
+  padding-left: 10px;
+  padding-top:5px;
 }
