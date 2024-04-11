@@ -40,18 +40,16 @@ const dummyDataArr = [
   },
 ]
 
-const dummyData = [
-  {
-    playerId: 1,
-    playerName: 'Joel',
-    playerScore: 1,
-    timeTaken: '',
-    playerGameModeId: 1,
-    gameModeId: 1,
-    gameModeName: 'Classic 1 Minute',
-    gameModeTimeLeft: '',
-  },
-]
+const dummyData = {
+  playerId: 1,
+  playerName: 'Joel',
+  playerScore: 1,
+  timeTaken: '',
+  playerGameModeId: 1,
+  gameModeId: 1,
+  gameModeName: 'Classic 1 Minute',
+  gameModeTimeLeft: '',
+}
 
 describe('GET /api/v1/player ', () => {
   it('Should send status 200 for getAllGameModesAndAllPlayers', async () => {

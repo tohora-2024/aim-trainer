@@ -27,8 +27,8 @@ describe('getGameModeByPlayerId', () => {
     // Arrange / Act
     const player = await db.getGameModeByPlayerId(1)
     // Assert
-    expect(player[0].playerName).toBe('Joel')
-    expect(player[0].gameModeName).toBe('Classic 1 Minute')
+    expect(player.playerName).toBe('Joel')
+    expect(player.gameModeName).toBe('Classic 1 Minute')
   })
 })
 
