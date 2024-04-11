@@ -1,89 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/index.scss';
+import { Link } from 'react-router-dom'
+import '../styles/index.scss'
+import HitCounter from './hit-counter'
+import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 
 interface GridProps {
-  onStartGame: () => void;
+  onStartGame: () => void
 }
 
-const GameGrid: React.FC<GridProps> = ({ onStartGame }) => {
-  const numRows = 9;
-  const numCols = 10;
-  const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({ row: 0, col: 0 });
-  const [timerStarted, setTimerStarted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState<number>(60000);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-
-    if (timerStarted) {
-      interval = setInterval(() => {  
-        setTimeLeft(prevTimeLeft => {
-          if (prevTimeLeft <= 0) {
-            clearInterval(interval as NodeJS.Timeout);
-            navigate('/leaderboard');
-            return 0;
-          }
-          return prevTimeLeft - 1000;
-        });
-      }, 1000);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [timerStarted, navigate]);
-
+function Grid({ onStartGame }: GridProps) {
+  const numRows = 9
+  const numCols = 10
+  const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({
+    row: 0,
+    col: 0,
+  })
+  const [hitCount, setHitCount] = useState(0)
   const handleCellClick = (row: number, col: number) => {
-    if (!timerStarted) {
-      setTimerStarted(true);
-    }
     if (targetCell.row === row && targetCell.col === col) {
-      const newTargetCell = getRandomCell();
-      setTargetCell(newTargetCell);
-      onStartGame();
+      const newTargetCell = getRandomCell()
+      setTargetCell(newTargetCell)
+      onStartGame()
+      setHitCount(hitCount + 1)
     }
-  };
+  }
 
   const getRandomCell = () => {
-    const randomRow = Math.floor(Math.random() * numRows);
-    const randomCol = Math.floor(Math.random() * numCols);
-    return { row: randomRow, col: randomCol };
-  };
+    const randomRow = Math.floor(Math.random() * numRows)
+    const randomCol = Math.floor(Math.random() * numCols)
+    return { row: randomRow, col: randomCol }
+  }
 
-  const gridCells = [];
+  const gridCells = []
 
   for (let row = 0; row < numRows; row++) {
     for (let col = 0; col < numCols; col++) {
-      const isTarget = targetCell && targetCell.row === row && targetCell.col === col;
-      const cellColor = isTarget ? '#000' : '#fff';
+      const isTarget =
+        targetCell && targetCell.row === row && targetCell.col === col
+      const cellColor = isTarget ? '#000' : '#fff'
       gridCells.push(
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           key={`${row}-${col}`}
           className="grid-cell"
           style={{ backgroundColor: cellColor }}
           onClick={() => handleCellClick(row, col)}
+          tabIndex={0}
+          role="button"
         ></div>,
-      );
+      )
     }
   }
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60000);
-    const seconds = Math.floor((time % 60000) / 1000);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  };
-
   return (
     <>
-      <div className="app">
-        <h1>Aim Trainer</h1>
-        <div>{formatTime(timeLeft)}</div>
+      <div className="button-container">
+        <button>
+          <Link to="/">Home</Link>
+        </button>
       </div>
-      <div className="grid-container">{gridCells}</div>
+      <div className="grid-container">
+        <HitCounter hitCount={hitCount} />
+        {gridCells}
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default GameGrid;
+export default Grid

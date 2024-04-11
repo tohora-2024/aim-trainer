@@ -1,11 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <Outlet />
+      <div className="app">
+        <h1>Aim Trainer</h1>
+      </div>
+      <div className="grid-container">
+        <Outlet />
+      </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
