@@ -5,3 +5,10 @@ export interface Player {
   time: string
   gamemodeId: number
 }
+
+export interface PlayerData {
+  name: string
+  score: number
+  time: string
+  gamemodeId: number
+}
