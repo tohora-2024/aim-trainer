@@ -1,14 +1,5 @@
-import {
-  it,
-  expect,
-  describe,
-  vi,
-  beforeAll,
-  beforeEach,
-  afterAll,
-} from 'vitest'
+import { it, expect, describe, beforeAll, beforeEach, afterAll } from 'vitest'
 import request from 'supertest'
-import * as db from '../../db/functions/gamemodeFunctions.ts'
 import server from '../../server.ts'
 import connection from '../../db/connection.ts'
 

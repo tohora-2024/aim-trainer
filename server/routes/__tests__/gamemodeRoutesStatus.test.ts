@@ -75,7 +75,7 @@ describe('PATCH /api/v1/gamemode/:id', () => {
 
     const res = await request(server).patch(`${rootUrl}/1`).send(dummyDataNew)
 
-    expect(res.statusCode).toBe(200)
+    expect(res.statusCode).toBe(204)
   })
   it('Should send status 500 updateGameModeById', async () => {
     const dummyDataNew = { name: 'Classic 4 Minute', timeLeft: '2:00' }

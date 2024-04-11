@@ -45,7 +45,7 @@ router.patch('/:id', async (req, res) => {
     const { name, timeLeft } = req.body
     const updatedGameMode = { name, timeLeft }
     await db.updateGameModeById(id, updatedGameMode)
-    res.sendStatus(200)
+    res.sendStatus(204)
   } catch (error) {
     console.error('Error on get update game mode', error)
     res.sendStatus(500)
