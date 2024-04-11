@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import '../styles/index.scss'
+import HitCounter from './hit-counter'
 
 function Grid() {
   const numRows = 9
@@ -9,6 +10,7 @@ function Grid() {
     row: 0,
     col: 0,
   })
+  const [hitCount, setHitCount] = useState(0)
 
   const gridCells = []
 
@@ -41,6 +43,7 @@ function Grid() {
     if (targetCell.row === row && targetCell.col === col) {
       const newTargetCell = getRandomCell()
       setTargetCell(newTargetCell)
+      setHitCount(hitCount + 1)
     }
   }
 
@@ -51,7 +54,10 @@ function Grid() {
           <Link to="/">Home</Link>
         </button>
       </div>
-      <div className="grid-container">{gridCells}</div>
+      <div className="grid-container">
+        <HitCounter hitCount={hitCount} />
+        {gridCells}
+      </div>
     </>
   )
 }
