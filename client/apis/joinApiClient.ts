@@ -1,14 +1,18 @@
 import request from 'superagent'
-// import { Player, PlayerData } from '../../models/player'
+import { GameModeAndPlayer } from '../../models/join'
 
-const rootUrl = '/api/v1/player'
+const rootUrl = '/api/v1/join'
 
-export async function getAllPlayers() {
+export async function getAllGameModesAndAllPlayers(): Promise<
+  GameModeAndPlayer[]
+> {
   const res = await request.get(rootUrl)
   return res.body
 }
 
-export async function getPlayerById(id: number) {
+export async function getGameModeByPlayerId(
+  id: number,
+): Promise<GameModeAndPlayer> {
   const res = await request.get(`${rootUrl}/${id}`)
   return res.body
 }
