@@ -15,13 +15,41 @@ function Grid({ onStartGame }: GridProps) {
     row: 0,
     col: 0,
   })
+  const [timerStarted, setTimerStarted] = useState(false)
+  const [timeLeft, setTimeLeft] = useState<number>(60000)
+  const navigate = useNavigate()
   const [hitCount, setHitCount] = useState(0)
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null
+
+    if (timerStarted) {
+      interval = setInterval(() => {
+        setTimeLeft((prevTimeLeft) => {
+          if (prevTimeLeft <= 0) {
+            clearInterval(interval as NodeJS.Timeout)
+            navigate('/leaderboard')
+            return 0
+          }
+          return prevTimeLeft - 1000
+        })
+      }, 1000)
+    }
+
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [timerStarted, navigate])
+
   const handleCellClick = (row: number, col: number) => {
+    if (!timerStarted) {
+      setTimerStarted(true)
+    }
     if (targetCell.row === row && targetCell.col === col) {
       const newTargetCell = getRandomCell()
       setTargetCell(newTargetCell)
-      onStartGame()
       setHitCount(hitCount + 1)
+      onStartGame()
     }
   }
 
@@ -52,6 +80,12 @@ function Grid({ onStartGame }: GridProps) {
     }
   }
 
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60000)
+    const seconds = Math.floor((time % 60000) / 1000)
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+  }
+
   return (
     <>
       <div className="button-container">
@@ -59,6 +93,7 @@ function Grid({ onStartGame }: GridProps) {
           <Link to="/">Home</Link>
         </button>
       </div>
+      <div>{formatTime(timeLeft)}</div>
       <div className="grid-container">
         <HitCounter hitCount={hitCount} />
         {gridCells}
