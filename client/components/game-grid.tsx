@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import '../styles/index.scss'
 import HitCounter from './hit-counter'
 import { useNavigate } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 interface GridProps {
   onStartGame: () => void
@@ -89,11 +89,15 @@ function Grid({ onStartGame }: GridProps) {
   return (
     <>
       <div className="button-container">
+        <p>Click the target to begin</p>
         <button>
           <Link to="/">Home</Link>
         </button>
       </div>
-      <div>{formatTime(timeLeft)}</div>
+      <div className="time-container">
+        <strong>Time left: </strong>
+        {formatTime(timeLeft)}
+      </div>
       <div className="grid-container">
         <HitCounter hitCount={hitCount} />
         {gridCells}

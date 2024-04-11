@@ -7,7 +7,9 @@ interface HitCounterProps {
 const HitCounter: React.FC<HitCounterProps> = ({ hitCount }) => {
   return (
     <div className="hit-counter">
-      <p>Hits: {hitCount}</p>
+      <p>
+        <strong>Hits:</strong> {hitCount}
+      </p>
     </div>
   )
 }
