@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import '../styles/index.scss'
 import HitCounter from './hit-counter'
 import { useNavigate } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 interface GridProps {
   onStartGame: () => void
