@@ -3,7 +3,7 @@ import { useGetGameModeAndPlayer } from '../hooks/useJoins'
 
 export default function Leaderboard() {
   const { gamemode } = useParams()
-  const { data } = useGetGameModeAndPlayer(gamemode)
+  const { data } = useGetGameModeAndPlayer(gamemode || '')
 
   console.log('data', data)
 
