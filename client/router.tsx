@@ -7,7 +7,6 @@ import App from './components/App'
 import Grid from './components/game-grid'
 import Home from './components/Home'
 import Leaderboard from './components/Leaderboard'
-import { useState } from 'react'
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -25,7 +24,7 @@ const router = createBrowserRouter(
         path="classic3min"
         element={<Grid onStartGame={() => {}} duration={180000} />}
       />
-      <Route path="leaderboard" element={<Leaderboard />} />
+      <Route path="leaderboard/:gamemode" element={<Leaderboard />} />
     </Route>,
   ]),
 )
