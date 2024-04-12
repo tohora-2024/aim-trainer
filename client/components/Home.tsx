@@ -8,8 +8,12 @@ export default function Home() {
         <button>
           <Link to="classic">Classic</Link>
         </button>
-        <button>Classic (2 minutes)</button>
-        <button>Classic (3 minutes)</button>
+        <button>
+          <Link to="classic2min">Classic (2 minutes)</Link>
+        </button>
+        <button>
+          <Link to="classic3min">Classic (3 minutes)</Link>
+        </button>
         <button>Till you miss</button>
       </div>
     </>
