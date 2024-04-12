@@ -6,6 +6,7 @@ const db = connection
 export async function getAllPlayers(): Promise<Player[]> {
   return await db('player').select()
 }
+
 export async function getAllPlayersByGameMode(
   gamemode: string,
 ): Promise<Player[]> {

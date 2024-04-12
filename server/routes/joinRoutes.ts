@@ -3,15 +3,15 @@ import * as db from '../db/functions/joinFunctions.ts'
 
 const router = Router()
 
-router.get('/', async (req, res) => {
-  try {
-    const everything = await db.getGameModesAndPlayers()
-    res.json(everything)
-  } catch (error) {
-    console.error('Error on get all game modes and players:', error)
-    res.sendStatus(500)
-  }
-})
+// router.get('/', async (req, res) => {
+//   try {
+//     const everything = await db.getGameModesAndPlayers()
+//     res.json(everything)
+//   } catch (error) {
+//     console.error('Error on get all game modes and players:', error)
+//     res.sendStatus(500)
+//   }
+// })
 
 router.get('/:id', async (req, res) => {
   try {
@@ -24,12 +24,12 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// GET /api/v1/join
 router.get('/', async (req, res) => {
   try {
     const gamemode = String(req.query.gamemode ?? 'Classic 1 Minute')
     const player = await db.getAllGameModesAndAllPlayers(gamemode)
     res.json(player)
+    console.log('I am 100 percent confident kinda')
   } catch (error) {
     console.error('Error on get all player:', error)
     res.sendStatus(500)
