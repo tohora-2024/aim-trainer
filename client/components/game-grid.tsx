@@ -6,9 +6,10 @@ import { useState, useEffect } from 'react'
 
 interface GridProps {
   onStartGame: () => void
+  duration: number
 }
 
-function Grid({ onStartGame }: GridProps) {
+function Grid({ onStartGame, duration }: GridProps) {
   const numRows = 9
   const numCols = 10
   const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({
@@ -16,7 +17,7 @@ function Grid({ onStartGame }: GridProps) {
     col: 0,
   })
   const [timerStarted, setTimerStarted] = useState(false)
-  const [timeLeft, setTimeLeft] = useState<number>(60000)
+  const [timeLeft, setTimeLeft] = useState<number>(duration)
   const navigate = useNavigate()
   const [hitCount, setHitCount] = useState(0)
 
@@ -39,7 +40,7 @@ function Grid({ onStartGame }: GridProps) {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [timerStarted, navigate])
+  }, [timerStarted, navigate, duration])
 
   const handleCellClick = (row: number, col: number) => {
     if (!timerStarted) {
