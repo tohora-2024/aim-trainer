@@ -35,6 +35,9 @@ const dummyDataArr = [
     time_taken: '',
     gamemode_id: 1,
   },
+  { id: 4, name: 'Berhane', score: 10, time_taken: '', gamemode_id: 2 },
+  { id: 5, name: 'Gerard', score: 100, time_taken: '', gamemode_id: 2 },
+  { id: 6, name: 'Robert', score: 20, time_taken: '', gamemode_id: 3 },
 ]
 
 const dummyData = {
@@ -49,7 +52,7 @@ describe('GET /api/v1/player ', () => {
   it('Should get all players', async () => {
     const res = await request(server).get(`${rootUrl}`)
 
-    expect(res.body).toHaveLength(3)
+    expect(res.body).toHaveLength(6)
     expect(res.body).toStrictEqual(dummyDataArr)
     expect(res.body).toMatchInlineSnapshot(`
       [
@@ -71,6 +74,27 @@ describe('GET /api/v1/player ', () => {
           "gamemode_id": 1,
           "id": 3,
           "name": "Boston",
+          "score": 20,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 2,
+          "id": 4,
+          "name": "Berhane",
+          "score": 10,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 2,
+          "id": 5,
+          "name": "Gerard",
+          "score": 100,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 3,
+          "id": 6,
+          "name": "Robert",
           "score": 20,
           "time_taken": "",
         },
@@ -108,7 +132,7 @@ describe('POST /api/v1/player', () => {
 
     const res = await request(server).get('/api/v1/player')
 
-    expect(res.body).toHaveLength(4)
+    expect(res.body).toHaveLength(7)
     expect(res.body).toMatchInlineSnapshot(`
       [
         {
@@ -133,8 +157,29 @@ describe('POST /api/v1/player', () => {
           "time_taken": "",
         },
         {
-          "gamemode_id": null,
+          "gamemode_id": 2,
           "id": 4,
+          "name": "Berhane",
+          "score": 10,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 2,
+          "id": 5,
+          "name": "Gerard",
+          "score": 100,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 3,
+          "id": 6,
+          "name": "Robert",
+          "score": 20,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": null,
+          "id": 7,
           "name": "NEW DATA",
           "score": 100,
           "time_taken": null,
@@ -155,7 +200,7 @@ describe('PATCH /api/v1/player/:id', () => {
     await request(server).patch('/api/v1/player/2').send(patchDummyData)
     const res = await request(server).get('/api/v1/player')
 
-    expect(res.body).toHaveLength(3)
+    expect(res.body).toHaveLength(6)
     expect(res.body).toMatchInlineSnapshot(`
       [
         {
@@ -179,6 +224,27 @@ describe('PATCH /api/v1/player/:id', () => {
           "score": 20,
           "time_taken": "",
         },
+        {
+          "gamemode_id": 2,
+          "id": 4,
+          "name": "Berhane",
+          "score": 10,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 2,
+          "id": 5,
+          "name": "Gerard",
+          "score": 100,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 3,
+          "id": 6,
+          "name": "Robert",
+          "score": 20,
+          "time_taken": "",
+        },
       ]
     `)
   })
@@ -190,7 +256,7 @@ describe('DELETE /api/v1/player/:id', () => {
 
     const res = await request(server).get('/api/v1/player')
 
-    expect(res.body).toHaveLength(2)
+    expect(res.body).toHaveLength(5)
     expect(res.body).toMatchInlineSnapshot(`
       [
         {
@@ -204,6 +270,27 @@ describe('DELETE /api/v1/player/:id', () => {
           "gamemode_id": 1,
           "id": 3,
           "name": "Boston",
+          "score": 20,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 2,
+          "id": 4,
+          "name": "Berhane",
+          "score": 10,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 2,
+          "id": 5,
+          "name": "Gerard",
+          "score": 100,
+          "time_taken": "",
+        },
+        {
+          "gamemode_id": 3,
+          "id": 6,
+          "name": "Robert",
           "score": 20,
           "time_taken": "",
         },

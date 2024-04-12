@@ -13,7 +13,8 @@ beforeEach(async () => {
 describe('getAllGameModesAndAllPlayers', () => {
   it('Should get all gamemodes and players', async () => {
     // Arrange / Act
-    const allGameModesAndAllPlayers = await db.getAllGameModesAndAllPlayers()
+    const allGameModesAndAllPlayers =
+      await db.getAllGameModesAndAllPlayers('Classic 1 Minute')
 
     // Assert
     expect(allGameModesAndAllPlayers).toHaveLength(3)
