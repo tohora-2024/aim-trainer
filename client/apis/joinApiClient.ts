@@ -11,8 +11,8 @@ export async function getAllGameModesAndAllPlayers(): Promise<
 }
 
 export async function getGameModeByPlayerId(
-  id: number,
+  playerId: number,
 ): Promise<GameModeAndPlayer> {
-  const res = await request.get(`${rootUrl}/${id}`)
+  const res = await request.get(`${rootUrl}/${playerId}`)
   return res.body
 }
