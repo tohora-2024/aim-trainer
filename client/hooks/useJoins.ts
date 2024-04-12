@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
 import * as api from '../apis/joinApiClient.ts'
-import { GameModeAndPlayer } from '../../models/join'
 
 export function useGetAllGameModesAndAllPlayers() {
   return useQuery({

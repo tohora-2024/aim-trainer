@@ -3,8 +3,8 @@ import { Player, PlayerData } from '../../models/player'
 
 const rootUrl = '/api/v1/player'
 
-export async function getAllPlayers(): Promise<Player[]> {
-  const res = await request.get(rootUrl)
+export async function getAllPlayers(gamemode: string): Promise<Player[]> {
+  const res = await request.get(rootUrl).query({ gamemode })
   return res.body
 }
 
