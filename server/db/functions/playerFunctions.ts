@@ -6,6 +6,11 @@ const db = connection
 export async function getAllPlayers(): Promise<Player[]> {
   return await db('player').select()
 }
+export async function getAllPlayersByGameMode(
+  gamemode: string,
+): Promise<Player[]> {
+  return await db('player').select().where('gamemode', gamemode)
+}
 
 export async function getPlayerById(id: number): Promise<Player> {
   return await db('player').where('id', id).select().first()
