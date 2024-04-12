@@ -28,6 +28,7 @@
   "dependencies": {
     "express": "^4.17.2",
     "knex": "^2.5.1",
+    "nock": "^13.5.4",
     "sqlite3": "^5.1.6",
     "superagent": "^8.1.2"
   },
