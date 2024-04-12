@@ -1,4 +1,5 @@
 export interface Player {
+  playerGameModeId: number
   id: number
   name: string
   score: number
