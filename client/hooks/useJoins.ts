@@ -14,3 +14,10 @@ export function useGetGameModeByPlayerId(playerId: number) {
     queryFn: () => api.getGameModeByPlayerId(playerId),
   })
 }
+
+export function useGetGameModeAndPlayer(gamemode: string) {
+  return useQuery({
+    queryKey: ['gamemode', gamemode],
+    queryFn: () => api.getGameModesAndPlayers(gamemode),
+  })
+}

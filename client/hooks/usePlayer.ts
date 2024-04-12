@@ -7,10 +7,10 @@ export function useCustomQueryClient() {
   return queryClient
 }
 
-export function useGetAllPlayers(gamemode: string) {
+export function useGetAllPlayers() {
   return useQuery({
-    queryKey: ['gamemode', gamemode],
-    queryFn: () => api.getAllPlayers(gamemode),
+    queryKey: ['gamemode'],
+    queryFn: () => api.getAllPlayers(),
   })
 }
 
