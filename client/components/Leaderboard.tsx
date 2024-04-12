@@ -13,23 +13,29 @@ interface Props {
 }
 export default function Leaderboard({ gamemode }: Props) {
   const { data } = useGetGameModeAndPlayer(gamemode)
-  const dataArr = Array(data)
 
-  console.log('data', dataArr)
+  console.log('data', data)
 
   return (
     <>
       <h1>LEADERBOARD</h1>
       <div>
-        {dataArr
+        {/* {data?.map((player) => (
+          <div key={player.playerId}>
+            <p>Name: {player.playerName}</p>
+            <p>Score: {player.playerScore}</p>
+          </div>
+        ))} */}
+        {data
           ?.filter(
-            (player) =>
-              Number(player?.playerGameModeId) === Number(player?.gameModeId),
+            (gamemode) =>
+              Number(gamemode?.playerGameModeId) === Number(gamemode),
           )
           .map((player) => (
             <div key={player?.playerId}>
               <p>Player: {player?.playerName}</p>
               <p>Score: {player?.playerScore}</p>
+              <p>Gamemode: {player?.gameModeName}</p>
             </div>
           ))}
       </div>
