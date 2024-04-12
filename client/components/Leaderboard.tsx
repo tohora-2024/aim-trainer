@@ -1,17 +1,8 @@
-import { GameModeAndPlayer } from '../../models/join'
-import { Player } from '../../models/player'
-import { useGetAllGameModes, useGetGameModeById } from '../hooks/useGamemode'
-import {
-  useGetAllGameModesAndAllPlayers,
-  useGetGameModeByPlayerId,
-  useGetGameModeAndPlayer,
-} from '../hooks/useJoins'
-import { useGetAllPlayers } from '../hooks/usePlayer'
+import { useParams } from 'react-router-dom'
+import { useGetGameModeAndPlayer } from '../hooks/useJoins'
 
-interface Props {
-  gamemode: string
-}
-export default function Leaderboard({ gamemode }: Props) {
+export default function Leaderboard() {
+  const { gamemode } = useParams()
   const { data } = useGetGameModeAndPlayer(gamemode)
 
   console.log('data', data)
@@ -20,24 +11,13 @@ export default function Leaderboard({ gamemode }: Props) {
     <>
       <h1>LEADERBOARD</h1>
       <div>
-        {/* {data?.map((player) => (
-          <div key={player.playerId}>
-            <p>Name: {player.playerName}</p>
-            <p>Score: {player.playerScore}</p>
+        {data?.map((player) => (
+          <div key={player?.playerId}>
+            <p>Player: {player?.playerName}</p>
+            <p>Score: {player?.playerScore}</p>
+            <p>Gamemode: {player?.gameModeName}</p>
           </div>
-        ))} */}
-        {data
-          ?.filter(
-            (gamemode) =>
-              Number(gamemode?.playerGameModeId) === Number(gamemode),
-          )
-          .map((player) => (
-            <div key={player?.playerId}>
-              <p>Player: {player?.playerName}</p>
-              <p>Score: {player?.playerScore}</p>
-              <p>Gamemode: {player?.gameModeName}</p>
-            </div>
-          ))}
+        ))}
       </div>
     </>
   )
