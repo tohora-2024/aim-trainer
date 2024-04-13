@@ -3,6 +3,7 @@ import '../styles/index.scss'
 import HitCounter from './hit-counter'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import AddNameForm from './AddNameForm'
 
 interface GridProps {
   onStartGame: () => void
