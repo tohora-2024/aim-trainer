@@ -22,7 +22,8 @@ const router = createBrowserRouter(
       />
       <Route
         path="classic3min"
-        element={<Grid onStartGame={() => {}} duration={180000} />}
+        //Changed game time for testing purposes please cahnge the 6000 below back to 180000
+        element={<Grid onStartGame={() => {}} duration={6000} />}
       />
       <Route path="leaderboard/:gamemode" element={<Leaderboard />} />
     </Route>,

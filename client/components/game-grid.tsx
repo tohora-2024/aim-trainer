@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import '../styles/index.scss'
 import HitCounter from './hit-counter'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import AddNameForm from './AddNameForm'
 
 interface GridProps {
   onStartGame: () => void
@@ -21,6 +20,7 @@ function Grid({ onStartGame, duration }: GridProps) {
   const [timeLeft, setTimeLeft] = useState<number>(duration)
   const navigate = useNavigate()
   const [hitCount, setHitCount] = useState(0)
+  const { gamemode } = useParams()
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null
@@ -30,7 +30,7 @@ function Grid({ onStartGame, duration }: GridProps) {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft <= 0) {
             clearInterval(interval as NodeJS.Timeout)
-            navigate('/leaderboard')
+            navigate(`/leaderboard/${gamemode}`)
             return 0
           }
           return prevTimeLeft - 1000
@@ -41,7 +41,7 @@ function Grid({ onStartGame, duration }: GridProps) {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [timerStarted, navigate, duration])
+  }, [timerStarted, navigate, gamemode, duration])
 
   const handleCellClick = (row: number, col: number) => {
     if (!timerStarted) {

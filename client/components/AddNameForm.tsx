@@ -3,9 +3,10 @@ import { useAddPlayer, useGetAllPlayers } from '../hooks/usePlayer'
 
 interface AddNameFormProps {
   score: number
+  hitCount: number
 }
 
-export default function AddNameForm({ score }: AddNameFormProps) {
+export default function AddNameForm({ score, hitCount }: AddNameFormProps) {
   // const { data } = useGetAllPlayers()
   const addMutation = useAddPlayer()
   const [newName, setNewName] = useState('')
@@ -21,6 +22,7 @@ export default function AddNameForm({ score }: AddNameFormProps) {
       name: newName,
       score: score,
       gamemodeId: selectedGameMode,
+      hitCount: hitCount,
     }
     addMutation.mutate(player)
     setNewName('')
