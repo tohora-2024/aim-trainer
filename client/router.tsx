@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom'
 import App from './components/App'
-import Grid from './components/game-grid'
+import Grid from './components/Grid'
 import Home from './components/Home'
 import Leaderboard from './components/Leaderboard'
 
@@ -29,7 +29,7 @@ const router = createBrowserRouter(
           <Grid
             onStartGame={() => {}}
             //Changed game time for testing purposes please change the 6000 below back to 120000
-            duration={60000}
+            duration={6000}
             selectedGameMode="Classic 2 Minute"
           />
         }

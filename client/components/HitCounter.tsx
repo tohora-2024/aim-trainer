@@ -4,7 +4,7 @@ interface HitCounterProps {
   hitCount: number
 }
 
-const HitCounter: React.FC<HitCounterProps> = ({ hitCount }) => {
+export const HitCounter: React.FC<HitCounterProps> = ({ hitCount }) => {
   return (
     <div className="hit-counter">
       <p>
@@ -13,5 +13,3 @@ const HitCounter: React.FC<HitCounterProps> = ({ hitCount }) => {
     </div>
   )
 }
-
-export default HitCounter
