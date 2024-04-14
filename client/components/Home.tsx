@@ -20,7 +20,6 @@ export default function Home() {
         <button onClick={() => handleGameModeSelect('Classic 3 Minute')}>
           <Link to="Classic 3 Minute">Classic (3 minutes)</Link>
         </button>
-        <button>Till you miss</button>
       </div>
     </>
   )
