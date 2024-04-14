@@ -13,17 +13,36 @@ const router = createBrowserRouter(
     <Route key="app" path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route
-        path="classic"
-        element={<Grid onStartGame={() => {}} duration={60000} />}
+        path="Classic 1 Minute"
+        element={
+          <Grid
+            onStartGame={() => {}}
+            //Changed game time for testing purposes please change the 6000 below back to 180000
+            duration={6000}
+            selectedGameMode="Classic 1 Minute"
+          />
+        }
       />
       <Route
-        path="classic2min"
-        element={<Grid onStartGame={() => {}} duration={120000} />}
+        path="Classic 2 Minute"
+        element={
+          <Grid
+            onStartGame={() => {}}
+            duration={120000}
+            selectedGameMode="Classic 2 Minute"
+          />
+        }
       />
       <Route
-        path="classic3min"
-        //Changed game time for testing purposes please cahnge the 6000 below back to 180000
-        element={<Grid onStartGame={() => {}} duration={6000} />}
+        path="Classic 3 Minute"
+        //Changed game time for testing purposes please change the 6000 below back to 180000
+        element={
+          <Grid
+            onStartGame={() => {}}
+            duration={6000}
+            selectedGameMode="Classic 3 Minute"
+          />
+        }
       />
       <Route path="leaderboard/:gamemode" element={<Leaderboard />} />
     </Route>,

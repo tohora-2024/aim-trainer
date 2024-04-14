@@ -4,13 +4,15 @@ import HitCounter from './hit-counter'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useGetAllGameModes, useGetGameModeById } from '../hooks/useGamemode'
+import { useGetGameModeAndPlayer } from '../hooks/useJoins'
 
 interface GridProps {
   onStartGame: () => void
   duration: number
+  selectedGameMode: string
 }
 
-function Grid({ onStartGame, duration }: GridProps) {
+function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
   const numRows = 9
   const numCols = 10
   const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({
@@ -22,6 +24,7 @@ function Grid({ onStartGame, duration }: GridProps) {
   const navigate = useNavigate()
   const [hitCount, setHitCount] = useState(0)
   const { gamemode } = useParams()
+  const { data } = useGetGameModeAndPlayer(gamemode || '')
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null
@@ -31,7 +34,7 @@ function Grid({ onStartGame, duration }: GridProps) {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft <= 0) {
             clearInterval(interval as NodeJS.Timeout)
-            navigate(`/leaderboard/${gamemode}`)
+            navigate(`/leaderboard/${selectedGameMode}`)
             return 0
           }
           return prevTimeLeft - 1000
@@ -42,7 +45,7 @@ function Grid({ onStartGame, duration }: GridProps) {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [timerStarted, navigate, gamemode, duration])
+  }, [timerStarted, navigate, selectedGameMode, duration, gamemode])
 
   const handleCellClick = (row: number, col: number) => {
     if (!timerStarted) {
