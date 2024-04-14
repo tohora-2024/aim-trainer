@@ -1,19 +1,23 @@
 import { useState } from 'react'
 import { useAddPlayer, useGetAllPlayers } from '../hooks/usePlayer'
 
-interface AddNameFormProps {
-  score: number
-  hitCount: number
-}
-
-export default function AddNameForm({ score, hitCount }: AddNameFormProps) {
+export default function AddNameForm() {
   // const { data } = useGetAllPlayers()
   const addMutation = useAddPlayer()
   const [newName, setNewName] = useState('')
-  const [selectedGameMode, setSelectedGameMode] = useState<number>(0)
+  const [selectedGameModeId, setSelectedGameModeId] = useState<number>(0)
+  const [score, setScore] = useState<number>(0)
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewName(event.target.value)
+  }
+
+  const handleScore = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setScore(parseInt(event.target.value))
+  }
+
+  const handleGameModeId = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedGameModeId(parseInt(event.target.value))
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -21,11 +25,12 @@ export default function AddNameForm({ score, hitCount }: AddNameFormProps) {
     const player = {
       name: newName,
       score: score,
-      gamemodeId: selectedGameMode,
-      hitCount: hitCount,
+      gamemodeId: selectedGameModeId,
     }
     addMutation.mutate(player)
     setNewName('')
+    setScore(0)
+    setSelectedGameModeId(0)
   }
 
   return (
@@ -39,6 +44,20 @@ export default function AddNameForm({ score, hitCount }: AddNameFormProps) {
             placeholder="Name"
             value={newName}
             id="name"
+          />
+          <label htmlFor="score">Score</label>
+          <input
+            onChange={handleScore}
+            placeholder="Score"
+            value={score}
+            id="score"
+          />
+          <label htmlFor="gamemodeid">GMID</label>
+          <input
+            onChange={handleGameModeId}
+            placeholder="Game Mode Id"
+            value={selectedGameModeId}
+            id="gamemodeId"
           />
           <button type="submit">Add Me To Leaderboard!</button>
         </form>
