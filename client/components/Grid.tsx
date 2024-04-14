@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../styles/index.scss'
-import HitCounter from './hit-counter'
+import { HitCounter } from './HitCounter'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
@@ -30,7 +30,9 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft <= 0) {
             clearInterval(interval as NodeJS.Timeout)
-            navigate(`/leaderboard/${selectedGameMode}`)
+            const params = new URLSearchParams()
+            params.set('score', String(hitCount))
+            navigate(`/leaderboard/${selectedGameMode}?${params.toString()}`)
             return 0
           }
           return prevTimeLeft - 1000
@@ -41,7 +43,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [timerStarted, navigate, selectedGameMode, duration])
+  }, [timerStarted, navigate, selectedGameMode, duration, hitCount])
 
   const handleCellClick = (row: number, col: number) => {
     if (!timerStarted) {
