@@ -7,8 +7,6 @@ export default function Leaderboard() {
   const { gamemode } = useParams()
   const { data } = useGetGameModeAndPlayer(gamemode || '')
 
-  console.log('data', data)
-
   const data2 = data?.sort(function (
     a: GameModeAndPlayerData,
     b: GameModeAndPlayerData,
@@ -21,13 +19,12 @@ export default function Leaderboard() {
   return (
     <>
       <h1>LEADERBOARD</h1>
-      {/* <AddNameForm score={hitCount} /> */}
+      <AddNameForm />
       <div>
         {data2?.map((player) => (
           <div key={player?.playerId}>
             <p>Player: {player?.playerName}</p>
             <p>Score: {player?.playerScore}</p>
-            <p>Gamemode: {player?.gameModeName}</p>
           </div>
         ))}
       </div>

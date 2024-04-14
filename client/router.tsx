@@ -17,7 +17,7 @@ const router = createBrowserRouter(
         element={
           <Grid
             onStartGame={() => {}}
-            //Changed game time for testing purposes please change the 6000 below back to 180000
+            //Changed game time for testing purposes please change the 6000 below back to 60000
             duration={6000}
             selectedGameMode="Classic 1 Minute"
           />
@@ -28,7 +28,8 @@ const router = createBrowserRouter(
         element={
           <Grid
             onStartGame={() => {}}
-            duration={120000}
+            //Changed game time for testing purposes please change the 6000 below back to 120000
+            duration={60000}
             selectedGameMode="Classic 2 Minute"
           />
         }
