@@ -203,6 +203,11 @@ button {
   font-size: 2rem;
 }
 
+.target-img {
+  width: 47px;
+  height: 47px;
+  pointer-events: none;
+}
 
 @media screen and (max-width: 768px) {
   .home-container {

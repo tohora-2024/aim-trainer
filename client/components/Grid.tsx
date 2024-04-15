@@ -77,17 +77,23 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
     for (let col = 0; col < numCols; col++) {
       const isTarget =
         targetCell && targetCell.row === row && targetCell.col === col
-      const cellColor = isTarget ? '#fff' : '#800000'
       gridCells.push(
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           key={`${row}-${col}`}
           className="grid-cell"
-          style={{ backgroundColor: cellColor }}
           onClick={timerStarted ? () => handleCellClick(row, col) : undefined}
           tabIndex={0}
           role="button"
-        ></div>,
+        >
+          {isTarget && (
+            <img
+              className="target-img"
+              src="../../images/light.jpeg"
+              alt="Target"
+            />
+          )}
+        </div>,
       )
     }
   }
