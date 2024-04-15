@@ -1,31 +1,33 @@
-import { useState, createContext, useContext } from 'react'
-import { useAddPlayer, useGetAllPlayers } from '../hooks/usePlayer'
+import { useState } from 'react'
+import { useAddPlayer } from '../hooks/usePlayer'
 import { useSearchParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+// interface AddNameFormProps {
+//   selectedGameMode: string
+// }
 
-interface AddNameFormProps {
-  selectedGameMode: string
-}
-
-export default function AddNameForm({ selectedGameMode }: AddNameFormProps) {
+export default function AddNameForm(/*{ selectedGameMode }: AddNameFormProps*/) {
   // const { data } = useGetAllPlayers()
-  const [searchParams] = useSearchParams()
   const addMutation = useAddPlayer()
   const [newName, setNewName] = useState('')
-  // const [selectedGameModeId, setSelectedGameModeId] = useState<number>(0)
+  const location = useLocation()
+  const [selectedGameModeId, setSelectedGameModeId] = useState<number>(0)
 
-  const newScore = useContext(ScoreContext)
+  // const newScore = useContext(ScoreContext)
 
-  const score = Number(searchParams.get('score'))
-  let selectedGameModeId: number
-  if (selectedGameMode === 'Classic 1 Minute') {
-    return (selectedGameModeId = 1)
-  } else if (selectedGameMode === 'Classic 2 Minute') {
-    return (selectedGameModeId = 2)
-  } else if (selectedGameMode === 'Classic 3 Minute') {
-    return (selectedGameModeId = 3)
-  }
+  // const selectedGameModeLocation = location.state.selectedGameMode
 
-  // console.log(selectedGameMode)
+  // if (selectedGameModeLocation === 'Classic 1 Minute') {
+  //   return setSelectedGameModeId(1)
+  // }
+  // } else if (selectedGameModeLocation === 'Classic 2 Minute') {
+  //   return setSelectedGameModeId(2)
+  // } else if (selectedGameModeLocation === 'Classic 3 Minute') {
+  //   return setSelectedGameModeId(3)
+  // }
+
+  // console.log(location)
+  // console.log(selectedGameModeLocation)
 
   // switch (selectedGameMode) {
   //   case 'Classic 1 Minute':
@@ -50,7 +52,7 @@ export default function AddNameForm({ selectedGameMode }: AddNameFormProps) {
 
     const player = {
       name: newName,
-      score: score,
+      score: location.state.hitCount,
       gamemodeId: selectedGameModeId,
     }
     addMutation.mutate(player)
