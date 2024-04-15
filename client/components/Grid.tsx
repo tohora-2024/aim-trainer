@@ -101,7 +101,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
   return (
     <>
       <div className="button-container">
-        <p>Click the button below to begin</p>
+        <p>Click the start timer to begin</p>
         <button onClick={handleStartButtonClick} disabled={timerStarted}>
           Start Timer
         </button>

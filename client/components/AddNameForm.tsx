@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAddPlayer } from '../hooks/usePlayer'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 export default function AddNameForm() {
   const { id } = useParams()
