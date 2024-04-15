@@ -27,8 +27,8 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
 
   // const stuff = `/leaderboard/${selectedGameMode}?${params.toString()}`
 
-  const ScoreContext = createContext(hitCount)
-  const GamemodeContext = createContext(selectedGameMode)
+  // const ScoreContext = createContext(hitCount)
+  // const GamemodeContext = createContext(selectedGameMode)
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null
@@ -49,7 +49,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [timerStarted, navigate, selectedGameMode, duration, hitCount])
+  }, [timerStarted, navigate, selectedGameMode, duration])
 
   const handleCellClick = (row: number, col: number) => {
     if (!timerStarted) {
@@ -109,10 +109,10 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         {formatTime(timeLeft)}
       </div>
       <div className="grid-container">
-        <GamemodeContext.Provider
+        {/* <GamemodeContext.Provider
           value={selectedGameMode}
-        ></GamemodeContext.Provider>
-        <ScoreContext.Provider value={hitCount}></ScoreContext.Provider>
+        ></GamemodeContext.Provider> */}
+        {/* <ScoreContext.Provider value={hitCount}></ScoreContext.Provider> */}
         <HitCounter hitCount={hitCount} />
         {gridCells}
       </div>
