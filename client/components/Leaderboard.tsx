@@ -5,12 +5,7 @@ import { GameModeAndPlayerData } from '../../models/join'
 
 export default function Leaderboard() {
   const { id } = useParams()
-
-  console.log(id, '😂👌😒🤣')
-
   const { data } = useGetGameModeAndPlayer(Number(id))
-
-  console.log(data, '😂👌😒🤣')
 
   const arrData = data?.sort(function (
     a: GameModeAndPlayerData,
@@ -23,15 +18,19 @@ export default function Leaderboard() {
 
   return (
     <>
-      <h1>LEADERBOARD</h1>
-      <AddNameForm />
-      <div>
-        {arrData?.map((player) => (
-          <div key={player?.playerId}>
-            <p>Player: {player?.playerName}</p>
-            <p>Score: {player?.playerScore}</p>
-          </div>
-        ))}
+      <div className="leaderboard-container">
+        <h1 className="leaderboard-title">LEADERBOARD</h1>
+        <AddNameForm />
+        <div className="leaderboard">
+          {arrData?.map((player) => (
+            <div key={player?.playerId} className="player-info">
+              <div className="player-details">
+                <p className="player-name">Player: {player?.playerName}</p>
+                <p className="player-score">Score: {player?.playerScore}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )

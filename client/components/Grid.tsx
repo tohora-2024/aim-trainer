@@ -77,7 +77,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
     for (let col = 0; col < numCols; col++) {
       const isTarget =
         targetCell && targetCell.row === row && targetCell.col === col
-      const cellColor = isTarget ? '#000' : '#fff'
+      const cellColor = isTarget ? '#fff' : '#800000'
       gridCells.push(
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
@@ -110,13 +110,13 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         </button>
       </div>
       <div className="time-container">
-        <strong>Time left: </strong>
+        <strong className="text-grid">Time left: </strong>
         {formatTime(timeLeft)}
       </div>
-      <div className="grid-container">
+      <div className="hit-count-container">
         <HitCounter hitCount={hitCount} />
-        {gridCells}
       </div>
+      <div className="grid-container">{gridCells}</div>
     </>
   )
 }

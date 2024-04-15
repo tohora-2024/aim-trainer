@@ -25,18 +25,20 @@ export default function AddNameForm() {
 
   return (
     <>
-      <h3>Add Your Name</h3>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Enter Name</label>
-          <input
-            onChange={handleName}
-            placeholder="Name"
-            value={newName}
-            id="name"
-          />
-          <button type="submit">Add Me To Leaderboard!</button>
-        </form>
+      <div className="form-container">
+        <h3 className="form-title">Add Your Name</h3>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Enter Name</label>
+            <input
+              onChange={handleName}
+              placeholder="Name"
+              value={newName}
+              id="name"
+            />
+            <button type="submit">Add Me To Leaderboard!</button>
+          </form>
+        </div>
       </div>
     </>
   )

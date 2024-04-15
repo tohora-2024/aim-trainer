@@ -2,7 +2,7 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import nock from 'nock'
-import GameGrid from '../game-grid'
+import GameGrid from '../Grid'
 import { render, screen, act } from '@testing-library/react'
 
 beforeAll(() => {

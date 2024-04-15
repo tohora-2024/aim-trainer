@@ -6,10 +6,25 @@ body {
   margin: 0;
   padding: 15px;
   height: 100%;
+  background-color: #800000
+}
+
+.info-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; 
+}
+
+.time-container, .hit-counter-container {
+  margin-bottom: 10px; 
+  color: white;
+  margin-top: 30px;
 }
 
 .button-container {
-  position: absolute;
+  position: relative;
   top: 5px; 
   z-index: 1;
 }
@@ -18,12 +33,14 @@ body {
   display: inline-block;
   vertical-align: middle;
   padding-right: 10px;
+  color: white;
 }
+
 button {
   padding: 5px;
   margin: 0 5px 0 5px;
   border-radius: 10px;
-  background-color: rgba(231, 229, 229, 0.541);
+  background-color: red;
 }
 
 .grid-container {
@@ -34,7 +51,7 @@ button {
   grid-gap: 0.0625rem;
   background-color: transparent;
   width: 95vw;
-  height: 95vh;
+  height: 80vh;
   padding: 1rem;
   margin-left: 10px;
   justify-content: center;
@@ -64,13 +81,123 @@ button {
   left:0;
 }
 
-.time-container {
+// .time-container {
 
-  position: absolute;
-  top: 5px;
-  z-index: 1;
-  top:0;
-  left:0;
-  padding-left: 10px;
-  padding-top:5px;
+//   position: absolute;
+//   top: 5px;
+//   z-index: 1;
+//   top:0;
+//   left:0;
+//   padding-left: 10px;
+//   padding-top:5px;
+// }
+
+.leaderboard-container{
+  text-align: center;
+  margin-top: 10px;
+  background: linear-gradient(to bottom, #FF0000, #000000);
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 3px white solid
+}
+
+.app {
+  text-align: center;
+  background: linear-gradient(to bottom, #FF0000, #000000);
+  border: 3px white solid;
+  border-radius: 30px;
+  color: white;
+}
+
+.home-container {
+  color: white;
+  background: linear-gradient(to bottom, #FF0000, #000000);
+  border: 3px white solid;
+  border-radius: 30px;
+  width: 80%;
+  max-width: 600px; 
+  margin: 0 auto; 
+  padding: 20px; 
+  box-sizing: border-box; 
+}
+
+.home-title {
+  font-size: 20px;
+}
+
+.leaderboard-title{
+  font-size: 64px;
+  color: #FFFFFF;
+  font-family: 'Roboto Slab', serif;
+  padding: 20px;
+}
+
+.player-info {
+  background-color: #800000; 
+  padding: 20px;
+  margin: 40px 0;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+
+}
+
+.player-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.player-info:hover {
+  transform: translateY(-5px);
+}
+
+
+.player-name {
+  font-weight: bold;
+  color: #FFFFFF; 
+}
+
+
+.player-score {
+  color: #FFFFFF; 
+}
+
+.game-details {
+  margin-top: 10px
+}
+
+.game-mode {
+  color:#FFFFFF; 
+ 
+}
+
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(8, 1fr); 
+    grid-template-rows: repeat(8, 1fr);
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
+  }
+  
+  .grid-cell {
+    width: calc((100vw - 30px) / 8); 
+    height: calc((100vh - 30px) / 8);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr); 
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
+  }
+  
+  .grid-cell {
+    width: calc((100vw - 30px) / 6); 
+    height: calc((100vh - 30px) / 6);
+  }
 }
