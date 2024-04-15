@@ -119,7 +119,7 @@ button {
   align-content: center;
 }
 
-.home-container {
+.home-container, .form-container {
   color: white;
   background: linear-gradient(to bottom, #FF0000, #000000);
   border: 3px white solid;
@@ -140,7 +140,7 @@ button {
   transform: translate(-50%)
 }
 
-.home-title {
+.home-title, .form-title {
   font-size: 20px;
 }
 
@@ -191,6 +191,23 @@ button {
  
 }
 
+.form-label {
+  font-size: 1.5rem;
+}
+
+.textbox {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
+}
+
+.target-img {
+  width: 47px;
+  height: 47px;
+  pointer-events: none;
+}
 
 @media screen and (max-width: 768px) {
   .home-container {

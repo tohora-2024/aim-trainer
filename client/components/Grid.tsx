@@ -31,7 +31,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft <= 0) {
             clearInterval(interval as NodeJS.Timeout)
-            navigate(`/leaderboard/${selectedGameMode}`, {
+            navigate(`/add-score/${selectedGameMode}`, {
               state: { hitCount: hitCountRef.current, selectedGameMode },
             })
             return 0
@@ -77,17 +77,23 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
     for (let col = 0; col < numCols; col++) {
       const isTarget =
         targetCell && targetCell.row === row && targetCell.col === col
-      const cellColor = isTarget ? '#fff' : '#800000'
       gridCells.push(
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           key={`${row}-${col}`}
           className="grid-cell"
-          style={{ backgroundColor: cellColor }}
           onClick={timerStarted ? () => handleCellClick(row, col) : undefined}
           tabIndex={0}
           role="button"
-        ></div>,
+        >
+          {isTarget && (
+            <img
+              className="target-img"
+              src="../../images/light.jpeg"
+              alt="Target"
+            />
+          )}
+        </div>,
       )
     }
   }
@@ -101,7 +107,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
   return (
     <>
       <div className="button-container">
-        <p>Click the button below to begin</p>
+        <p>Click the start timer to begin</p>
         <button onClick={handleStartButtonClick} disabled={timerStarted}>
           Start Timer
         </button>
