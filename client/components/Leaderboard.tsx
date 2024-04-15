@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { useGetGameModeAndPlayer } from '../hooks/useJoins'
-import AddNameForm from './AddNameForm'
 import { GameModeAndPlayerData } from '../../models/join'
 
 export default function Leaderboard() {
@@ -20,7 +19,6 @@ export default function Leaderboard() {
     <>
       <div className="leaderboard-container">
         <h1 className="leaderboard-title">LEADERBOARD</h1>
-        <AddNameForm />
         <div className="leaderboard">
           {arrData?.map((player) => (
             <div key={player?.playerId} className="player-info">

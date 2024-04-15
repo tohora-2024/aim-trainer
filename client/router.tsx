@@ -7,6 +7,7 @@ import App from './components/App'
 import Grid from './components/Grid'
 import Home from './components/Home'
 import Leaderboard from './components/Leaderboard'
+import AddNameForm from './components/AddNameForm'
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
         }
       />
       <Route path="leaderboard/:id" element={<Leaderboard />} />
+      <Route path="add-score/:id" element={<AddNameForm />} />
     </Route>,
   ]),
 )

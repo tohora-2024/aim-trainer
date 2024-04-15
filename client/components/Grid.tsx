@@ -31,7 +31,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft <= 0) {
             clearInterval(interval as NodeJS.Timeout)
-            navigate(`/leaderboard/${selectedGameMode}`, {
+            navigate(`/add-score/${selectedGameMode}`, {
               state: { hitCount: hitCountRef.current, selectedGameMode },
             })
             return 0
