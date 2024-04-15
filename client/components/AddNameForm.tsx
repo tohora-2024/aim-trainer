@@ -8,7 +8,7 @@ export default function AddNameForm() {
   const [newName, setNewName] = useState('')
   const location = useLocation()
   const navigate = useNavigate()
-  const scoreDisplay = location.state.hitCount
+  const score = location.state.hitCount
   let clicked = false
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,7 +20,7 @@ export default function AddNameForm() {
 
     const player = {
       name: newName,
-      score: location.state.hitCount,
+      score: score,
       gamemodeId: location.state.selectedGameMode,
     }
     addMutation.mutate(player)
@@ -37,18 +37,21 @@ export default function AddNameForm() {
   return (
     <>
       <div className="form-container">
-        <h2>Your score: {scoreDisplay}</h2>
-        <h3 className="form-title">Add Your Name</h3>
+        <h2>Your score: {score}</h2>
         <div>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Enter Name</label>
+            <label htmlFor="name" className="form-label">
+              Enter Name
+            </label>
+            <br />
             <input
               onChange={handleName}
               placeholder="Name"
               value={newName}
               id="name"
+              className="textbox"
             />
-            <button type="submit">Add Me To Leaderboard!</button>
+            <button type="submit">Add To Leaderboard!</button>
           </form>
         </div>
       </div>

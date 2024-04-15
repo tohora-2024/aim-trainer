@@ -119,7 +119,7 @@ button {
   align-content: center;
 }
 
-.home-container {
+.home-container, .form-container {
   color: white;
   background: linear-gradient(to bottom, #FF0000, #000000);
   border: 3px white solid;
@@ -140,7 +140,7 @@ button {
   transform: translate(-50%)
 }
 
-.home-title {
+.home-title, .form-title {
   font-size: 20px;
 }
 
@@ -189,6 +189,18 @@ button {
 .game-mode {
   color:#FFFFFF; 
  
+}
+
+.form-label {
+  font-size: 1.5rem;
+}
+
+.textbox {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
 }
 
 
