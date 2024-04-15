@@ -1,4 +1,5 @@
 export interface Player {
+  playerGameModeId: number
   id: number
   name: string
   score: number
@@ -9,6 +10,6 @@ export interface Player {
 export interface PlayerData {
   name: string
   score: number
-  time: string
+  time?: string
   gamemodeId: number
 }

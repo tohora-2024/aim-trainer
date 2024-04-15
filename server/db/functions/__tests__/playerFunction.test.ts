@@ -14,7 +14,7 @@ describe('getAllPlayers', () => {
   it('Should get all players', async () => {
     const allPlayers = await db.getAllPlayers()
 
-    expect(allPlayers).toHaveLength(3)
+    expect(allPlayers).toHaveLength(6)
     expect(allPlayers[0].id).toBe(1)
   })
 })
@@ -40,7 +40,7 @@ describe('addplayer', () => {
 
     const allplayers = await db.getAllPlayers()
 
-    expect(allplayers).toHaveLength(4)
+    expect(allplayers).toHaveLength(7)
     expect(allplayers[3].id).toBe(4)
   })
 })
@@ -64,8 +64,8 @@ describe('deleteplayerById', () => {
 
     const allplayers = await db.getAllPlayers()
 
-    expect(allplayers).toHaveLength(2)
-    expect(allplayers[2]).toBe(undefined)
+    expect(allplayers).toHaveLength(5)
+    expect(allplayers[5]).toBe(undefined)
   })
 })
 

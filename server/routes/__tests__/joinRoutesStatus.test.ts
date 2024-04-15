@@ -38,31 +38,59 @@ const dummyDataArr = [
     gameModeName: 'Classic 2 Minute',
     gameModeTimeLeft: '',
   },
-]
-
-const dummyData = [
   {
-    playerId: 1,
-    playerName: 'Joel',
-    playerScore: 1,
+    playerId: 4,
+    playerName: 'Berhane',
+    playerScore: 10,
     timeTaken: '',
-    playerGameModeId: 1,
-    gameModeId: 1,
-    gameModeName: 'Classic 1 Minute',
-    gameModeTimeLeft: '',
+    playerGameModeId: 2,
+    gameModeId: 2,
+    gameModeName: 'Classic 2 Minute',
+    gameModeTimeLeft: '1:00',
+  },
+  {
+    playerId: 5,
+    playerName: 'Gerard',
+    playerScore: 100,
+    timeTaken: '',
+    playerGameModeId: 2,
+    gameModeId: 2,
+    gameModeName: 'Classic 2 Minute',
+    gameModeTimeLeft: '1:00',
+  },
+  {
+    playerId: 6,
+    playerName: 'Robert',
+    playerScore: 20,
+    timeTaken: '',
+    playerGameModeId: 3,
+    gameModeId: 3,
+    gameModeName: 'Classic 3 Minute',
+    gameModeTimeLeft: '1:00',
   },
 ]
 
+const dummyData = {
+  playerId: 1,
+  playerName: 'Joel',
+  playerScore: 1,
+  timeTaken: '',
+  playerGameModeId: 1,
+  gameModeId: 1,
+  gameModeName: 'Classic 1 Minute',
+  gameModeTimeLeft: '',
+}
+
 describe('GET /api/v1/player ', () => {
-  it('Should send status 200 for getAllGameModesAndAllPlayers', async () => {
-    vi.mocked(db.getAllGameModesAndAllPlayers).mockResolvedValue(dummyDataArr)
+  it('Should send status 200 for getGameModesAndPlayers', async () => {
+    vi.mocked(db.getGameModesAndPlayers).mockResolvedValue(dummyDataArr)
 
     const res = await request(server).get(`${rootUrl}`)
 
     expect(res.statusCode).toBe(200)
   })
-  it('Should send status 500 getAllGameModesAndAllPlayers', async () => {
-    vi.mocked(db.getAllGameModesAndAllPlayers).mockRejectedValue(dummyDataArr)
+  it('Should send status 500 getGameModesAndPlayers', async () => {
+    vi.mocked(db.getGameModesAndPlayers).mockRejectedValue(dummyDataArr)
 
     const res = await request(server).get(`${rootUrl}`)
 

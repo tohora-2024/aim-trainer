@@ -1,20 +1,30 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedGameMode, setSelectedGameMode] = useState('')
+
+  const handleGameModeSelect = (gameMode: string) => {
+    setSelectedGameMode(gameMode)
+  }
   return (
     <>
-      <h1>Pick a game mode</h1>
-      <div className="button-container">
-        <button>
-          <Link to="classic">Classic</Link>
-        </button>
-        <button>
-          <Link to="classic2min">Classic (2 minutes)</Link>
-        </button>
-        <button>
-          <Link to="classic3min">Classic (3 minutes)</Link>
-        </button>
-        <button>Till you miss</button>
+      <div className="home-container">
+        <h1 className="home-title">Pick a game mode</h1>
+        <Link to="1">
+          <button onClick={() => handleGameModeSelect('1')}>Classic</button>
+        </Link>
+        <Link to="2">
+          <button onClick={() => handleGameModeSelect('2')}>
+            Classic (2 minutes)
+          </button>
+        </Link>
+        <Link to="3">
+          <button onClick={() => handleGameModeSelect('3')}>
+            Classic (3 minutes)
+          </button>
+        </Link>
       </div>
     </>
   )

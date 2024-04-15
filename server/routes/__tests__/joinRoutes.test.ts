@@ -52,26 +52,54 @@ const dummyDataArr = [
     gameModeName: 'Classic 1 Minute',
     gameModeTimeLeft: '1:00',
   },
-]
-
-const dummyData = [
   {
-    playerId: 1,
-    playerName: 'Joel',
-    playerScore: 1,
+    playerId: 4,
+    playerName: 'Berhane',
+    playerScore: 10,
     timeTaken: '',
-    playerGameModeId: 1,
-    gameModeId: 1,
-    gameModeName: 'Classic 1 Minute',
+    playerGameModeId: 2,
+    gameModeId: 2,
+    gameModeName: 'Classic 2 Minute',
+    gameModeTimeLeft: '1:00',
+  },
+  {
+    playerId: 5,
+    playerName: 'Gerard',
+    playerScore: 100,
+    timeTaken: '',
+    playerGameModeId: 2,
+    gameModeId: 2,
+    gameModeName: 'Classic 2 Minute',
+    gameModeTimeLeft: '1:00',
+  },
+  {
+    playerId: 6,
+    playerName: 'Robert',
+    playerScore: 20,
+    timeTaken: '',
+    playerGameModeId: 3,
+    gameModeId: 3,
+    gameModeName: 'Classic 3 Minute',
     gameModeTimeLeft: '1:00',
   },
 ]
+
+const dummyData = {
+  playerId: 1,
+  playerName: 'Joel',
+  playerScore: 1,
+  timeTaken: '',
+  playerGameModeId: 1,
+  gameModeId: 1,
+  gameModeName: 'Classic 1 Minute',
+  gameModeTimeLeft: '1:00',
+}
 
 describe('GET /api/v1/join ', () => {
   it('Should get all players and all game modes', async () => {
     const res = await request(server).get(`${rootUrl}`)
 
-    expect(res.body).toHaveLength(3)
+    expect(res.body).toHaveLength(6)
     expect(res.body).toStrictEqual(dummyDataArr)
     expect(res.body).toMatchInlineSnapshot(`
       [
@@ -105,6 +133,36 @@ describe('GET /api/v1/join ', () => {
           "playerScore": 20,
           "timeTaken": "",
         },
+        {
+          "gameModeId": 2,
+          "gameModeName": "Classic 2 Minute",
+          "gameModeTimeLeft": "1:00",
+          "playerGameModeId": 2,
+          "playerId": 4,
+          "playerName": "Berhane",
+          "playerScore": 10,
+          "timeTaken": "",
+        },
+        {
+          "gameModeId": 2,
+          "gameModeName": "Classic 2 Minute",
+          "gameModeTimeLeft": "1:00",
+          "playerGameModeId": 2,
+          "playerId": 5,
+          "playerName": "Gerard",
+          "playerScore": 100,
+          "timeTaken": "",
+        },
+        {
+          "gameModeId": 3,
+          "gameModeName": "Classic 3 Minute",
+          "gameModeTimeLeft": "1:00",
+          "playerGameModeId": 3,
+          "playerId": 6,
+          "playerName": "Robert",
+          "playerScore": 20,
+          "timeTaken": "",
+        },
       ]
     `)
   })
@@ -116,18 +174,16 @@ describe('GET by ID /api/v1/join/:id', () => {
 
     expect(res.body).toStrictEqual(dummyData)
     expect(res.body).toMatchInlineSnapshot(`
-      [
-        {
-          "gameModeId": 1,
-          "gameModeName": "Classic 1 Minute",
-          "gameModeTimeLeft": "1:00",
-          "playerGameModeId": 1,
-          "playerId": 1,
-          "playerName": "Joel",
-          "playerScore": 1,
-          "timeTaken": "",
-        },
-      ]
+      {
+        "gameModeId": 1,
+        "gameModeName": "Classic 1 Minute",
+        "gameModeTimeLeft": "1:00",
+        "playerGameModeId": 1,
+        "playerId": 1,
+        "playerName": "Joel",
+        "playerScore": 1,
+        "timeTaken": "",
+      }
     `)
   })
 })
