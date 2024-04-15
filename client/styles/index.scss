@@ -14,29 +14,28 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center; /* Center the text horizontally */
+  text-align: center; 
 }
 
 .time-container, .hit-counter-container {
-  margin-bottom: 10px; /* Add some space between the two containers */
+  margin-bottom: 10px; 
+  color: white;
+  margin-top: 30px;
 }
 
 .button-container {
-  position: absolute;
-  top: 5px;
-left: 50%;
+  position: relative;
+  top: 5px; 
   z-index: 1;
-}
-
-.text-grid {
-  color: white
 }
 
 .button-container p {
   display: inline-block;
   vertical-align: middle;
   padding-right: 10px;
+  color: white;
 }
+
 button {
   padding: 5px;
   margin: 0 5px 0 5px;
@@ -50,31 +49,28 @@ button {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   grid-gap: 0.0625rem;
-  background-color:#800000 !important;
+  background-color: transparent;
   width: 95vw;
-  height: 95vh;
+  height: 80vh;
   padding: 1rem;
   margin-left: 10px;
-}
-
-.time-container, .hit-counter-container {
-  grid-column: span 10; /* Span the entire width of the grid */
-  text-align: left; /* Center the text horizontally */
-  color: white
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .grid-cell {
-  background-color: #800000 ;
-  border: 0.0625rem solid #800000;
+  background-color: transparent;
+  border: 0.0625rem solid transparent;
   border-radius: 35px;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   justify-content: center;
   justify-items: center;
 }
 
 .grid-cell:hover {
-  background-color: #800000;
+  background-color: transparent;
 }
 
 .hit-counter {
@@ -182,11 +178,13 @@ button {
   .grid-container {
     grid-template-columns: repeat(8, 1fr); 
     grid-template-rows: repeat(8, 1fr);
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
   }
   
   .grid-cell {
-    width: 50px; 
-    height: 50px; 
+    width: calc((100vw - 30px) / 8); 
+    height: calc((100vh - 30px) / 8);
   }
 }
 
@@ -194,10 +192,12 @@ button {
   .grid-container {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr); 
+    width: calc(100vw - 30px);
+    height: calc(100vh - 30px);
   }
   
   .grid-cell {
-    width: 40px; 
-    height: 40px;
+    width: calc((100vw - 30px) / 6); 
+    height: calc((100vh - 30px) / 6);
   }
 }

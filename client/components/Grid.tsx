@@ -98,26 +98,24 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
 
   return (
     <>
-      <div className="grid-container">
-        <div className="button-container">
-          <p className="text-grid">Click the target to begin</p>
-          <button>
-            <Link to="/">Home</Link>
-          </button>
-        </div>
-        <div className="time-container">
-          <strong className="text-grid">Time left: </strong>
-          {formatTime(timeLeft)}
-        </div>
-        <div className="hit-count-container">
-          {/* <GamemodeContext.Provider
+      <div className="button-container">
+        <p className="text-grid">Click the target to begin</p>
+        <button>
+          <Link to="/">Home</Link>
+        </button>
+      </div>
+      <div className="time-container">
+        <strong className="text-grid">Time left: </strong>
+        {formatTime(timeLeft)}
+      </div>
+      <div className="hit-count-container">
+        {/* <GamemodeContext.Provider
           value={selectedGameMode}
         ></GamemodeContext.Provider>
         <ScoreContext.Provider value={hitCount}></ScoreContext.Provider> */}
-          <HitCounter hitCount={hitCount} />
-          {gridCells}
-        </div>
+        <HitCounter hitCount={hitCount} />
       </div>
+      <div className="grid-container">{gridCells}</div>
     </>
   )
 }
