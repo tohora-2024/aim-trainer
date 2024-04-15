@@ -11,14 +11,14 @@ export default function Home() {
     <>
       <h1>Pick a game mode</h1>
       <div className="button-container">
-        <button onClick={() => handleGameModeSelect('Classic 1 Minute')}>
-          <Link to="Classic 1 Minute">Classic</Link>
+        <button onClick={() => handleGameModeSelect('1')}>
+          <Link to="1">Classic</Link>
         </button>
-        <button onClick={() => handleGameModeSelect('Classic 2 Minute')}>
-          <Link to="Classic 2 Minute">Classic (2 minutes)</Link>
+        <button onClick={() => handleGameModeSelect('2')}>
+          <Link to="2">Classic (2 minutes)</Link>
         </button>
-        <button onClick={() => handleGameModeSelect('Classic 3 Minute')}>
-          <Link to="Classic 3 Minute">Classic (3 minutes)</Link>
+        <button onClick={() => handleGameModeSelect('3')}>
+          <Link to="3">Classic (3 minutes)</Link>
         </button>
       </div>
     </>

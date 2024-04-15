@@ -4,8 +4,13 @@ import AddNameForm from './AddNameForm'
 import { GameModeAndPlayerData } from '../../models/join'
 
 export default function Leaderboard() {
-  const { gamemode } = useParams()
-  const { data } = useGetGameModeAndPlayer(gamemode || '')
+  const { id } = useParams()
+
+  console.log(id, '😂👌😒🤣')
+
+  const { data } = useGetGameModeAndPlayer(Number(id))
+
+  console.log(data, '😂👌😒🤣')
 
   const arrData = data?.sort(function (
     a: GameModeAndPlayerData,
@@ -19,7 +24,7 @@ export default function Leaderboard() {
   return (
     <>
       <h1>LEADERBOARD</h1>
-      <AddNameForm selectedGameMode={''} />
+      <AddNameForm />
       <div>
         {arrData?.map((player) => (
           <div key={player?.playerId}>

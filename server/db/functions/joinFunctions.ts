@@ -1,8 +1,5 @@
 import db from '../connection.ts'
-import {
-  GameModeAndPlayer,
-  GameModeAndPlayerData,
-} from '../../../models/join.ts'
+import { GameModeAndPlayer } from '../../../models/join.ts'
 
 export async function getGameModesAndPlayers(): Promise<GameModeAndPlayer[]> {
   const data = await db('player')
@@ -41,7 +38,7 @@ export async function getGameModeByPlayerId(
 }
 
 export async function getAllGameModesAndAllPlayers(
-  gamemode: string,
+  gamemodeId: number,
 ): Promise<GameModeAndPlayer[]> {
   const data = await db('player')
     .join('gamemode', 'player.gamemode_id', 'gamemode.id')
@@ -55,6 +52,6 @@ export async function getAllGameModesAndAllPlayers(
       'gamemode.name as gameModeName',
       'gamemode.time_left as gameModeTimeLeft',
     )
-    .where('gamemode.name', gamemode)
+    .where('gamemode.id', gamemodeId)
   return data
 }

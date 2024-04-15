@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const gamemode = String(req.query.gamemode ?? 'Classic 1 Minute')
+    const gamemode = Number(req.query.gamemodeId)
     const player = await db.getAllGameModesAndAllPlayers(gamemode)
     res.json(player)
     console.log('I am 100 percent confident kinda')

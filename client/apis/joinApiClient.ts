@@ -18,8 +18,8 @@ export async function getGameModeByPlayerId(
 }
 
 export async function getGameModesAndPlayers(
-  gamemode: string,
+  gamemodeId: number,
 ): Promise<GameModeAndPlayer[]> {
-  const res = await request.get(rootUrl).query({ gamemode })
+  const res = await request.get(rootUrl).query({ gamemodeId })
   return res.body
 }
