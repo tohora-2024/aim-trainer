@@ -1,5 +1,3 @@
-import React, { useContext } from 'react'
-
 interface PlayerInfoProps {
   score: number
   gamemode: string

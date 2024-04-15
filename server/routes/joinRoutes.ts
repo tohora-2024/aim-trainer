@@ -29,7 +29,6 @@ router.get('/', async (req, res) => {
     const gamemode = Number(req.query.gamemodeId)
     const player = await db.getAllGameModesAndAllPlayers(gamemode)
     res.json(player)
-    console.log('I am 100 percent confident kinda')
   } catch (error) {
     console.error('Error on get all player:', error)
     res.sendStatus(500)

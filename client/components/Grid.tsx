@@ -105,9 +105,9 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         <button onClick={handleStartButtonClick} disabled={timerStarted}>
           Start Timer
         </button>
-        <button>
-          <Link to="/">Home</Link>
-        </button>
+        <Link to={`/leaderboard/${selectedGameMode}`}>
+          <button>Leaderboard</button>
+        </Link>
       </div>
       <div className="time-container">
         <strong className="text-grid">Time left: </strong>
