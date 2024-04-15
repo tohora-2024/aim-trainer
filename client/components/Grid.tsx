@@ -75,7 +75,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
     for (let col = 0; col < numCols; col++) {
       const isTarget =
         targetCell && targetCell.row === row && targetCell.col === col
-      const cellColor = isTarget ? '#000' : '#fff'
+      const cellColor = isTarget ? '#fff' : '#800000'
       gridCells.push(
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
@@ -98,23 +98,25 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
 
   return (
     <>
-      <div className="button-container">
-        <p>Click the target to begin</p>
-        <button>
-          <Link to="/">Home</Link>
-        </button>
-      </div>
-      <div className="time-container">
-        <strong>Time left: </strong>
-        {formatTime(timeLeft)}
-      </div>
       <div className="grid-container">
-        {/* <GamemodeContext.Provider
+        <div className="button-container">
+          <p className="text-grid">Click the target to begin</p>
+          <button>
+            <Link to="/">Home</Link>
+          </button>
+        </div>
+        <div className="time-container">
+          <strong className="text-grid">Time left: </strong>
+          {formatTime(timeLeft)}
+        </div>
+        <div className="hit-count-container">
+          {/* <GamemodeContext.Provider
           value={selectedGameMode}
-        ></GamemodeContext.Provider> */}
-        {/* <ScoreContext.Provider value={hitCount}></ScoreContext.Provider> */}
-        <HitCounter hitCount={hitCount} />
-        {gridCells}
+        ></GamemodeContext.Provider>
+        <ScoreContext.Provider value={hitCount}></ScoreContext.Provider> */}
+          <HitCounter hitCount={hitCount} />
+          {gridCells}
+        </div>
       </div>
     </>
   )

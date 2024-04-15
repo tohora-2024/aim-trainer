@@ -4,11 +4,11 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1>Aim Trainer</h1>
+        <h1 className="app-title">Aim Trainer</h1>
       </div>
-      <div className="grid-container">
-        <Outlet />
-      </div>
+      {/* <div className="grid-container"> */}
+      <Outlet />
+      {/* </div> */}
     </>
   )
 }

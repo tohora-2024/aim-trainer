@@ -18,15 +18,21 @@ export default function Leaderboard() {
 
   return (
     <>
-      <h1>LEADERBOARD</h1>
-      <AddNameForm selectedGameMode={''} />
-      <div>
-        {arrData?.map((player) => (
-          <div key={player?.playerId}>
-            <p>Player: {player?.playerName}</p>
-            <p>Score: {player?.playerScore}</p>
-          </div>
-        ))}
+      <div className="leaderboard-container">
+        <h1 className="leaderboard-title">LEADERBOARD</h1>
+        <div className="leaderboard">
+          {data?.map((player) => (
+            <div key={player?.playerId} className="player-info">
+              <div className="player-details">
+                <p className="player-name">Player: {player?.playerName}</p>
+                <p className="player-score">Score: {player?.playerScore}</p>
+              </div>
+              <div className="game-details">
+                <p className="game-mode">Gamemode: {player?.gameModeName}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )

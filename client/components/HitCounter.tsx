@@ -6,9 +6,9 @@ interface HitCounterProps {
 
 export const HitCounter: React.FC<HitCounterProps> = ({ hitCount }) => {
   return (
-    <div className="hit-counter">
+    <div className="hit-counter-container">
       <p>
-        <strong>Hits:</strong> {hitCount}
+        <strong className="text-grid">Hits:</strong> {hitCount}
       </p>
     </div>
   )

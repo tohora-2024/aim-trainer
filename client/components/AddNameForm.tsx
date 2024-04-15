@@ -13,7 +13,7 @@ export default function AddNameForm({ selectedGameMode }: AddNameFormProps) {
   const [newName, setNewName] = useState('')
   // const [selectedGameModeId, setSelectedGameModeId] = useState<number>(0)
 
-  const newScore = useContext(ScoreContext)
+  // const newScore = useContext(ScoreContext)
 
   const score = Number(searchParams.get('score'))
   let selectedGameModeId: number
@@ -59,18 +59,20 @@ export default function AddNameForm({ selectedGameMode }: AddNameFormProps) {
 
   return (
     <>
-      <h3>Add Your Name</h3>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Enter Name</label>
-          <input
-            onChange={handleName}
-            placeholder="Name"
-            value={newName}
-            id="name"
-          />
-          <button type="submit">Add Me To Leaderboard!</button>
-        </form>
+      <div className="form-container">
+        <h3 className="form-title">Add Your Name</h3>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Enter Name</label>
+            <input
+              onChange={handleName}
+              placeholder="Name"
+              value={newName}
+              id="name"
+            />
+            <button type="submit">Add Me To Leaderboard!</button>
+          </form>
+        </div>
       </div>
     </>
   )

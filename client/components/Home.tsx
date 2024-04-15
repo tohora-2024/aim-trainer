@@ -9,8 +9,9 @@ export default function Home() {
   }
   return (
     <>
-      <h1>Pick a game mode</h1>
-      <div className="button-container">
+      <div className="home-container">
+        <h1 className="home-title">Pick a game mode</h1>
+        {/* <div className="button-container"> */}
         <button onClick={() => handleGameModeSelect('Classic 1 Minute')}>
           <Link to="Classic 1 Minute">Classic</Link>
         </button>
@@ -20,6 +21,7 @@ export default function Home() {
         <button onClick={() => handleGameModeSelect('Classic 3 Minute')}>
           <Link to="Classic 3 Minute">Classic (3 minutes)</Link>
         </button>
+        {/* </div> */}
       </div>
     </>
   )
