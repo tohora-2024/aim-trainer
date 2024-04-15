@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import '../styles/index.scss'
 import { HitCounter } from './HitCounter'
 import { useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 
 interface GridProps {
   onStartGame: () => void
@@ -22,6 +22,14 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
   const navigate = useNavigate()
   const [hitCount, setHitCount] = useState(0)
 
+  // const params = new URLSearchParams()
+  // params.set('score', String(hitCount))
+
+  // const stuff = `/leaderboard/${selectedGameMode}?${params.toString()}`
+
+  const ScoreContext = createContext(hitCount)
+  const GamemodeContext = createContext(selectedGameMode)
+
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null
 
@@ -30,9 +38,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft <= 0) {
             clearInterval(interval as NodeJS.Timeout)
-            const params = new URLSearchParams()
-            params.set('score', String(hitCount))
-            navigate(`/leaderboard/${selectedGameMode}?${params.toString()}`)
+            navigate(`/leaderboard/${selectedGameMode}`)
             return 0
           }
           return prevTimeLeft - 1000
@@ -103,6 +109,10 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
         {formatTime(timeLeft)}
       </div>
       <div className="grid-container">
+        <GamemodeContext.Provider
+          value={selectedGameMode}
+        ></GamemodeContext.Provider>
+        <ScoreContext.Provider value={hitCount}></ScoreContext.Provider>
         <HitCounter hitCount={hitCount} />
         {gridCells}
       </div>
@@ -111,3 +121,16 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
 }
 
 export default Grid
+
+//const ScoreContext = createContext<number>(0); // Assuming hitCount is a number
+// const GamemodeContext = createContext<string>(''); // Assuming selectedGameMode is a string
+
+// Inside your component
+{
+  /* <ScoreContext.Provider value={hitCount}>
+  <GamemodeContext.Provider value={selectedGameMode}>
+    <HitCounter hitCount={hitCount} />
+    {gridCells}
+  </GamemodeContext.Provider>
+</ScoreContext.Provider> */
+}

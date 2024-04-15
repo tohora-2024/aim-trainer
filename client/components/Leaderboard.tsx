@@ -19,7 +19,7 @@ export default function Leaderboard() {
   return (
     <>
       <h1>LEADERBOARD</h1>
-      <AddNameForm />
+      <AddNameForm selectedGameMode={''} />
       <div>
         {arrData?.map((player) => (
           <div key={player?.playerId}>
