@@ -1,7 +1,14 @@
 import { Outlet } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import buttonClick from '../../public/audio/button-click.mp3'
 
 function App() {
+  addEventListener('click', playAudio)
+
+  function playAudio() {
+    new Audio(buttonClick).play()
+  }
+
   return (
     <>
       <div className="app">
