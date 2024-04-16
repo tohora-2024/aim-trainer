@@ -29,7 +29,7 @@ export default function AddNameForm() {
     if (clicked === true) {
       setTimeout(() => {
         navigate(`/leaderboard/${id}`)
-      }, 10)
+      }, 500)
     }
     return
   }
