@@ -33,17 +33,15 @@ function HitTillYouMiss({
       setTargetCell(newTargetCell)
       setHitCount(hitCount + 1)
       hitCountRef.current++
-    } else {
-      navigate(`/leaderboard/${selectedGameMode}`, {
-        state: { hitCount: hitCountRef.current, selectedGameMode },
-      })
     }
   }
 
   const handleContainerClick = () => {
-    navigate(`/leaderboard/${selectedGameMode}`, {
-      state: { hitCount: hitCountRef.current, selectedGameMode },
-    })
+    if (!(targetCell.row === 0 && targetCell.col === 0)) {
+      navigate(`/leaderboard/${selectedGameMode}`, {
+        state: { hitCount: hitCountRef.current, selectedGameMode },
+      })
+    }
   }
 
   const getRandomCell = () => {
