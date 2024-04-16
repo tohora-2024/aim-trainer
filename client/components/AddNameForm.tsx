@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAddPlayer } from '../hooks/usePlayer'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import spongebob from '../../public/audio/spongebob-fail.mp3'
+import spongebob from '/audio/spongebob-fail.mp3'
 import { buttonClickAudio } from './PlayAudio'
 
 export default function AddNameForm() {

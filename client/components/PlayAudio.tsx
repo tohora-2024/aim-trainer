@@ -1,5 +1,5 @@
-import buttonClick from '../../public/audio/button-click.mp3'
-import targetClick from '../../public/audio/pistol-shot.mp3'
+import buttonClick from '/audio/button-click.mp3'
+import targetClick from '/audio/pistol-shot.mp3'
 // import spongebob from '../../public/audio/spongebob-fail.mp3'
 
 export function buttonClickAudio() {
