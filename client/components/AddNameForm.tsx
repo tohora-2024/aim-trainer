@@ -50,6 +50,7 @@ export default function AddNameForm() {
               value={newName}
               id="name"
               className="textbox"
+              required
             />
             <button type="submit">Add To Leaderboard!</button>
           </form>
