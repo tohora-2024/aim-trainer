@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useAddPlayer } from '../hooks/usePlayer'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import spongebob from '../../public/audio/spongebob-fail.mp3'
+import { buttonClickAudio } from './PlayAudio'
 
 export default function AddNameForm() {
   const { id } = useParams()
@@ -36,6 +38,10 @@ export default function AddNameForm() {
 
   return (
     <>
+      <audio autoPlay>
+        <track kind="captions"></track>
+        <source src={spongebob}></source>
+      </audio>
       <div className="form-container">
         <h2>Your score: {score}</h2>
         <div>
@@ -52,7 +58,9 @@ export default function AddNameForm() {
               className="textbox"
               required
             />
-            <button type="submit">Add To Leaderboard!</button>
+            <button onClick={() => buttonClickAudio()} type="submit">
+              Add To Leaderboard!
+            </button>
           </form>
         </div>
       </div>
