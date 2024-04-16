@@ -13,69 +13,6 @@ beforeEach(async () => {
   await connection.seed.run()
 })
 
-const dummyDataArr = [
-  {
-    playerId: 1,
-    playerName: 'Joel',
-    playerScore: 1,
-    timeTaken: '',
-    playerGameModeId: 1,
-    gameModeId: 1,
-    gameModeName: 'Classic 1 Minute',
-    gameModeTimeLeft: '1:00',
-  },
-  {
-    playerId: 2,
-    playerName: 'Jess',
-    playerScore: 10,
-    timeTaken: '',
-    playerGameModeId: 1,
-    gameModeId: 1,
-    gameModeName: 'Classic 1 Minute',
-    gameModeTimeLeft: '1:00',
-  },
-  {
-    playerId: 3,
-    playerName: 'Boston',
-    playerScore: 20,
-    timeTaken: '',
-    playerGameModeId: 1,
-    gameModeId: 1,
-    gameModeName: 'Classic 1 Minute',
-    gameModeTimeLeft: '1:00',
-  },
-  {
-    playerId: 4,
-    playerName: 'Berhane',
-    playerScore: 10,
-    timeTaken: '',
-    playerGameModeId: 2,
-    gameModeId: 2,
-    gameModeName: 'Classic 2 Minute',
-    gameModeTimeLeft: '1:00',
-  },
-  {
-    playerId: 5,
-    playerName: 'Gerard',
-    playerScore: 100,
-    timeTaken: '',
-    playerGameModeId: 2,
-    gameModeId: 2,
-    gameModeName: 'Classic 2 Minute',
-    gameModeTimeLeft: '1:00',
-  },
-  {
-    playerId: 6,
-    playerName: 'Robert',
-    playerScore: 20,
-    timeTaken: '',
-    playerGameModeId: 3,
-    gameModeId: 3,
-    gameModeName: 'Classic 3 Minute',
-    gameModeTimeLeft: '1:00',
-  },
-]
-
 const dummyData = {
   playerId: 1,
   playerName: 'Joel',
