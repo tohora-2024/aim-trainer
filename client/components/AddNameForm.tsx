@@ -29,7 +29,7 @@ export default function AddNameForm() {
     if (clicked === true) {
       setTimeout(() => {
         navigate(`/leaderboard/${id}`)
-      }, 10)
+      }, 500)
     }
     return
   }
@@ -50,6 +50,7 @@ export default function AddNameForm() {
               value={newName}
               id="name"
               className="textbox"
+              required
             />
             <button type="submit">Add To Leaderboard!</button>
           </form>
