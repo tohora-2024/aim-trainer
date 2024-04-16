@@ -63,7 +63,7 @@ button {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   grid-gap: 0.0625rem;
-  background-color: transparent;
+  background-color: #ccc;
   width: 95%;
   height: 70%;
   padding: 1rem;
@@ -74,7 +74,7 @@ button {
 }
 
 .grid-cell {
-  background-color: transparent;
+  background-color: #000000;
   border: 0.0625rem solid transparent;
   border-radius: 35px;
   width: 45px;

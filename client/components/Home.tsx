@@ -25,6 +25,11 @@ export default function Home() {
             Classic (3 minutes)
           </button>
         </Link>
+        <Link to="4">
+          <button onClick={() => handleGameModeSelect('4')}>
+            Hit Till You Miss
+          </button>
+        </Link>
       </div>
     </>
   )
