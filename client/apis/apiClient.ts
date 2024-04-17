@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Player, PlayerData } from '../../models/player'
+import { PlayerData } from '../../models/player'
 import { GameModeAndPlayer } from '../../models/join'
 
 const joinUrl = '/api/v1/join'
