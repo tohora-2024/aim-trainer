@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAddPlayer } from '../hooks/useHooks.ts'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
@@ -13,7 +13,11 @@ export default function AddNameForm() {
   const time = location.state.elapsedTime
   const [isVisible, setIsVisible] = useState(false)
 
-  function timeTakenVisibilty(selectedGameMode: number) {
+  useEffect(() => {
+    timeTakenVisibility(location.state.selectedGameMode)
+  }, [location.state.selectedGameMode])
+
+  function timeTakenVisibility(selectedGameMode: number) {
     setIsVisible(selectedGameMode === 4)
   }
 
@@ -40,6 +44,8 @@ export default function AddNameForm() {
     }
     return
   }
+
+  console.log(time)
 
   return (
     <>

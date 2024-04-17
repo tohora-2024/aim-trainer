@@ -46,6 +46,10 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
     }
   }
 
+  // setTimeout(function () {
+  //   console.log(elapsedTime)
+  // }, 5000)
+
   const handleContainerClick = () => {
     navigate(`/add-score/${selectedGameMode}`, {
       state: {
@@ -70,7 +74,6 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       )
       const minutes = Math.floor(elapsedTimeInSeconds / 60)
       const seconds = elapsedTimeInSeconds % 60
-      console.log(seconds)
       setElapsedTime({ minutes, seconds })
       requestAnimationFrame(updateTimer)
     }
