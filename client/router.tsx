@@ -17,19 +17,19 @@ const router = createBrowserRouter(
       <Route
         path="1"
         element={
-          <Grid onStartGame={() => {}} duration={60000} selectedGameMode="1" />
+          <Grid onStartGame={() => {}} duration={6000} selectedGameMode="1" />
         }
       />
       <Route
         path="2"
         element={
-          <Grid onStartGame={() => {}} duration={120000} selectedGameMode="2" />
+          <Grid onStartGame={() => {}} duration={6000} selectedGameMode="2" />
         }
       />
       <Route
         path="3"
         element={
-          <Grid onStartGame={() => {}} duration={180000} selectedGameMode="3" />
+          <Grid onStartGame={() => {}} duration={6000} selectedGameMode="3" />
         }
       />
       <Route path="4" element={<HitTillYouMiss selectedGameMode="4" />} />
