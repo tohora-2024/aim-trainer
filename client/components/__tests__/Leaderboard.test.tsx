@@ -10,7 +10,7 @@ import {
 } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import nock from 'nock'
-import { render, screen, act, cleanup } from '@testing-library/react/pure'
+import { render, cleanup } from '@testing-library/react/pure'
 import Leaderboard from '../Leaderboard'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
