@@ -17,7 +17,7 @@ const router = createBrowserRouter(
       <Route
         path="1"
         element={
-          <Grid onStartGame={() => {}} duration={6000} selectedGameMode="1" />
+          <Grid onStartGame={() => {}} duration={60000} selectedGameMode="1" />
         }
       />
       <Route
