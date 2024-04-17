@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useAddPlayer } from '../hooks/useHooks.ts'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import gameOver from '/audio/game-over.mp3'
+import { buttonClickAudio } from './PlayAudio'
 
 export default function AddNameForm() {
   const { id } = useParams()
@@ -53,6 +55,10 @@ export default function AddNameForm() {
 
   return (
     <>
+      <audio autoPlay>
+        <track kind="captions"></track>
+        <source src={gameOver}></source>
+      </audio>
       <div className="form-container">
         <h2>Your score: {score}</h2>
         {gamemodeId === '4' && (
@@ -74,7 +80,9 @@ export default function AddNameForm() {
               className="textbox"
               required
             />
-            <button type="submit">Add To Leaderboard!</button>
+            <button onClick={() => buttonClickAudio()} type="submit">
+              Add To Leaderboard!
+            </button>
           </form>
         </div>
       </div>
