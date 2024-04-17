@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAddPlayer } from '../hooks/useHooks.ts'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
@@ -11,54 +11,54 @@ export default function AddNameForm() {
   const score = location.state.hitCount
   let clicked = false
   const time = location.state.elapsedTime
-  const [isVisible, setIsVisible] = useState(true)
-
-  // function timeTakenVisibility(selectedGameMode: number) {
-  //   setIsVisible(selectedGameMode === 4)
-  // }
-
-  useEffect(() => {
-    setIsVisible(location.state.selectedGameMode === 4)
-  }, [location.state.selectedGameMode])
+  const gamemodeId = location.state.selectedGameMode
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewName(event.target.value)
   }
 
+  function timeString(time: { minutes: number; seconds: number }) {
+    return `${time.minutes} Minutes ${time.seconds} Seconds`
+  }
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
-    function timeString(time: any) {
-      return `${time.minutes} Minutes ${time.seconds} Seconds`
-    }
 
     const player = {
       name: newName,
       score: score,
-      time: timeString(time),
+      time: time,
       gamemodeId: location.state.selectedGameMode,
     }
-    addMutation.mutate(player)
-    setNewName('')
-    clicked = true
-    if (clicked === true) {
-      setTimeout(() => {
-        navigate(`/leaderboard/${id}`)
-      }, 500)
+
+    if (gamemodeId === '4' && time) {
+      player.time = timeString(time)
+    }
+
+    try {
+      addMutation.mutate(player)
+      setNewName('')
+
+      clicked = true
+      if (clicked === true) {
+        setTimeout(() => {
+          navigate(`/leaderboard/${id}`)
+        }, 500)
+      }
+    } catch (error) {
+      console.error('error in handlesubmit', error)
     }
     return
   }
-
-  console.log(time)
 
   return (
     <>
       <div className="form-container">
         <h2>Your score: {score}</h2>
-        {isVisible && (
-          <h2 className="hidden">
+        {gamemodeId === '4' && (
+          <h3>
             Time Taken: {time.minutes} Minutes {time.seconds} Seconds
-          </h2>
+          </h3>
         )}
         <div>
           <form onSubmit={handleSubmit}>
