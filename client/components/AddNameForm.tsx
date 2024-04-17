@@ -28,10 +28,14 @@ export default function AddNameForm() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
+    function timeString(time) {
+      return `${time.minutes} Minutes ${time.seconds} Seconds`
+    }
+
     const player = {
       name: newName,
       score: score,
-      time: { time },
+      time: timeString(time),
       gamemodeId: location.state.selectedGameMode,
     }
     addMutation.mutate(player)

@@ -39,7 +39,7 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       navigate(`/add-score/${selectedGameMode}`, {
         state: {
           elapsedTime: elapsedTime,
-          hitCount: startTimeRef.current,
+          hitCount: hitCountRef.current,
           selectedGameMode,
         },
       })
