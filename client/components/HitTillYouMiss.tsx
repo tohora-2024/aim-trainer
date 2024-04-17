@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link } from 'react-router-dom'
 import '../styles/index.scss'
 import { HitCounter } from './HitCounter'
@@ -36,14 +37,22 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       hitCountRef.current++
     } else {
       navigate(`/add-score/${selectedGameMode}`, {
-        state: { hitCount: hitCountRef.current, selectedGameMode },
+        state: {
+          elapsedTime: elapsedTime,
+          hitCount: startTimeRef.current,
+          selectedGameMode,
+        },
       })
     }
   }
 
   const handleContainerClick = () => {
     navigate(`/add-score/${selectedGameMode}`, {
-      state: { hitCount: hitCountRef.current, selectedGameMode },
+      state: {
+        elapsedTime: elapsedTime,
+        hitCount: hitCountRef.current,
+        selectedGameMode,
+      },
     })
   }
 
@@ -61,6 +70,7 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       )
       const minutes = Math.floor(elapsedTimeInSeconds / 60)
       const seconds = elapsedTimeInSeconds % 60
+      console.log(seconds)
       setElapsedTime({ minutes, seconds })
       requestAnimationFrame(updateTimer)
     }
@@ -101,6 +111,10 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
         <Link to={`/leaderboard/${selectedGameMode}`}>
           <button>Leaderboard</button>
         </Link>
+        <div className="time-container">
+          <strong className="text-grid">Time elapsed: </strong>
+          {elapsedTime.minutes} minutes {elapsedTime.seconds} seconds.
+        </div>
       </div>
       <div className="hit-count-container">
         <HitCounter hitCount={hitCount} />
@@ -119,9 +133,6 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
         tabIndex={0}
       >
         {gridCells}
-      </div>
-      <div className="timer">
-        Timer: {elapsedTime.minutes} minutes {elapsedTime.seconds} seconds
       </div>
     </>
   )

@@ -10,6 +10,12 @@ export default function AddNameForm() {
   const navigate = useNavigate()
   const score = location.state.hitCount
   let clicked = false
+  const time = location.state.elapsedTime
+  const [isVisible, setIsVisible] = useState(false)
+
+  function timeTakenVisibilty(selectedGameMode: number) {
+    setIsVisible(selectedGameMode === 4)
+  }
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewName(event.target.value)
@@ -21,6 +27,7 @@ export default function AddNameForm() {
     const player = {
       name: newName,
       score: score,
+      time: { time },
       gamemodeId: location.state.selectedGameMode,
     }
     addMutation.mutate(player)
@@ -38,6 +45,11 @@ export default function AddNameForm() {
     <>
       <div className="form-container">
         <h2>Your score: {score}</h2>
+        {isVisible && (
+          <h2 className="hidden" id="time">
+            Your time: {time}
+          </h2>
+        )}
         <div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name" className="form-label">
