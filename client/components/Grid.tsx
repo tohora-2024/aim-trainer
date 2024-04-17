@@ -125,7 +125,9 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
       <div className="hit-count-container">
         <HitCounter hitCount={hitCount} />
       </div>
-      <div className="grid-container">{gridCells}</div>
+      <div className="grid-container" data-testid="grid">
+        {gridCells}
+      </div>
     </>
   )
 }

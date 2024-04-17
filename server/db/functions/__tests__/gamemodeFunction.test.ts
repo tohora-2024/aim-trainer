@@ -14,7 +14,7 @@ describe('getAllGameModes', () => {
   it('Should get all gamemodes', async () => {
     const allGamemodes = await db.getAllGameModes()
 
-    expect(allGamemodes).toHaveLength(3)
+    expect(allGamemodes).toHaveLength(4)
     expect(allGamemodes[0].id).toBe(1)
   })
 })
@@ -34,7 +34,7 @@ describe('addGameMode', () => {
 
     const allGamemodes = await db.getAllGameModes()
 
-    expect(allGamemodes).toHaveLength(4)
+    expect(allGamemodes).toHaveLength(5)
     expect(allGamemodes[3].id).toBe(4)
   })
 })
@@ -58,8 +58,8 @@ describe('deleteGameModeById', () => {
 
     const allGamemodes = await db.getAllGameModes()
 
-    expect(allGamemodes).toHaveLength(2)
-    expect(allGamemodes[2]).toBe(undefined)
+    expect(allGamemodes).toHaveLength(3)
+    expect(allGamemodes[3]).toBe(undefined)
   })
 })
 
