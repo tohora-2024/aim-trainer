@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAddPlayer } from '../hooks/usePlayer'
+import { useAddPlayer } from '../hooks/useHooks.ts'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 export default function AddNameForm() {

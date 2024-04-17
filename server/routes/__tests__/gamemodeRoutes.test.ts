@@ -15,8 +15,9 @@ beforeEach(async () => {
 
 const dummyDataArr = [
   { id: 1, name: 'Classic 1 Minute', time_left: '1:00' },
-  { id: 2, name: 'Classic 2 Minute', time_left: '1:00' },
-  { id: 3, name: 'Classic 3 Minute', time_left: '1:00' },
+  { id: 2, name: 'Classic 2 Minute', time_left: '2:00' },
+  { id: 3, name: 'Classic 3 Minute', time_left: '3:00' },
+  { id: 4, name: 'Till you miss', time_left: '' },
 ]
 
 const dummyData = { id: 1, name: 'Classic 1 Minute', time_left: '1:00' }
@@ -25,7 +26,7 @@ describe('GET /api/v1/gamemode ', () => {
   it('Should get all game mode data', async () => {
     const res = await request(server).get(`${rootUrl}`)
 
-    expect(res.body).toHaveLength(3)
+    expect(res.body).toHaveLength(4)
     expect(res.body).toStrictEqual(dummyDataArr)
     expect(res.body).toMatchInlineSnapshot(`
       [
@@ -37,12 +38,17 @@ describe('GET /api/v1/gamemode ', () => {
         {
           "id": 2,
           "name": "Classic 2 Minute",
-          "time_left": "1:00",
+          "time_left": "2:00",
         },
         {
           "id": 3,
           "name": "Classic 3 Minute",
-          "time_left": "1:00",
+          "time_left": "3:00",
+        },
+        {
+          "id": 4,
+          "name": "Till you miss",
+          "time_left": "",
         },
       ]
     `)
@@ -71,7 +77,7 @@ describe('POST /api/v1/gamemode', () => {
 
     const res = await request(server).get('/api/v1/gamemode')
 
-    expect(res.body).toHaveLength(4)
+    expect(res.body).toHaveLength(5)
     expect(res.body).toMatchInlineSnapshot(`
       [
         {
@@ -82,15 +88,20 @@ describe('POST /api/v1/gamemode', () => {
         {
           "id": 2,
           "name": "Classic 2 Minute",
-          "time_left": "1:00",
+          "time_left": "2:00",
         },
         {
           "id": 3,
           "name": "Classic 3 Minute",
-          "time_left": "1:00",
+          "time_left": "3:00",
         },
         {
           "id": 4,
+          "name": "Till you miss",
+          "time_left": "",
+        },
+        {
+          "id": 5,
           "name": "NEW DATA",
           "time_left": "NEW DATA",
         },
@@ -106,7 +117,7 @@ describe('PATCH /api/v1/gamemode/:id', () => {
 
     const res = await request(server).get('/api/v1/gamemode')
 
-    expect(res.body).toHaveLength(3)
+    expect(res.body).toHaveLength(4)
     expect(res.body).toMatchInlineSnapshot(`
       [
         {
@@ -122,7 +133,12 @@ describe('PATCH /api/v1/gamemode/:id', () => {
         {
           "id": 3,
           "name": "Classic 3 Minute",
-          "time_left": "1:00",
+          "time_left": "3:00",
+        },
+        {
+          "id": 4,
+          "name": "Till you miss",
+          "time_left": "",
         },
       ]
     `)
@@ -135,7 +151,7 @@ describe('DELETE /api/v1/gamemode/:id', () => {
 
     const res = await request(server).get('/api/v1/gamemode')
 
-    expect(res.body).toHaveLength(2)
+    expect(res.body).toHaveLength(3)
     expect(res.body).toMatchInlineSnapshot(`
       [
         {
@@ -146,7 +162,12 @@ describe('DELETE /api/v1/gamemode/:id', () => {
         {
           "id": 3,
           "name": "Classic 3 Minute",
-          "time_left": "1:00",
+          "time_left": "3:00",
+        },
+        {
+          "id": 4,
+          "name": "Till you miss",
+          "time_left": "",
         },
       ]
     `)

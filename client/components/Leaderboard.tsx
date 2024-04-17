@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useGetGameModeAndPlayer } from '../hooks/useJoins'
+import { useGetGameModeAndPlayer } from '../hooks/useHooks.ts'
 import { GameModeAndPlayerData } from '../../models/join'
 
 export default function Leaderboard() {
