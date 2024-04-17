@@ -27,14 +27,14 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       setHitCount(hitCount + 1)
       hitCountRef.current++
     } else {
-      navigate(`/leaderboard/${selectedGameMode}`, {
+      navigate(`/add-score/${selectedGameMode}`, {
         state: { hitCount: hitCountRef.current, selectedGameMode },
       })
     }
   }
 
   const handleContainerClick = () => {
-    navigate(`/leaderboard/${selectedGameMode}`, {
+    navigate(`/add-score/${selectedGameMode}`, {
       state: { hitCount: hitCountRef.current, selectedGameMode },
     })
   }
