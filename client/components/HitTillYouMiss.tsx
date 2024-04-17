@@ -4,6 +4,7 @@ import '../styles/index.scss'
 import { HitCounter } from './HitCounter'
 import { useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
+import { buttonClickAudio, targetClickAudio } from './PlayAudio'
 
 interface HitTillYouMissProps {
   selectedGameMode: string
@@ -35,6 +36,7 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       setTargetCell(newTargetCell)
       setHitCount(hitCount + 1)
       hitCountRef.current++
+      targetClickAudio()
     } else {
       navigate(`/add-score/${selectedGameMode}`, {
         state: {
@@ -112,7 +114,7 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       <div className="button-container">
         <p>Click the target to begin</p>
         <Link to={`/leaderboard/${selectedGameMode}`}>
-          <button>Leaderboard</button>
+          <button onClick={() => buttonClickAudio()}>Leaderboard</button>
         </Link>
         <div className="time-container">
           <strong className="text-grid">Time elapsed: </strong>
