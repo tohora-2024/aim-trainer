@@ -11,15 +11,15 @@ export default function AddNameForm() {
   const score = location.state.hitCount
   let clicked = false
   const time = location.state.elapsedTime
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+
+  // function timeTakenVisibility(selectedGameMode: number) {
+  //   setIsVisible(selectedGameMode === 4)
+  // }
 
   useEffect(() => {
-    timeTakenVisibility(location.state.selectedGameMode)
+    setIsVisible(location.state.selectedGameMode === 4)
   }, [location.state.selectedGameMode])
-
-  function timeTakenVisibility(selectedGameMode: number) {
-    setIsVisible(selectedGameMode === 4)
-  }
 
   const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewName(event.target.value)
@@ -28,7 +28,7 @@ export default function AddNameForm() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    function timeString(time) {
+    function timeString(time: any) {
       return `${time.minutes} Minutes ${time.seconds} Seconds`
     }
 
@@ -56,8 +56,8 @@ export default function AddNameForm() {
       <div className="form-container">
         <h2>Your score: {score}</h2>
         {isVisible && (
-          <h2 className="hidden" id="time">
-            Your time: {time}
+          <h2 className="hidden">
+            Time Taken: {time.minutes} Minutes {time.seconds} Seconds
           </h2>
         )}
         <div>
