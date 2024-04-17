@@ -32,10 +32,7 @@ const router = createBrowserRouter(
           <Grid onStartGame={() => {}} duration={180000} selectedGameMode="3" />
         }
       />
-      <Route
-        path="4"
-        element={<HitTillYouMiss onStartGame={() => {}} selectedGameMode="4" />}
-      />
+      <Route path="4" element={<HitTillYouMiss selectedGameMode="4" />} />
       <Route path="leaderboard/:id" element={<Leaderboard />} />
       <Route path="add-score/:id" element={<AddNameForm />} />
     </Route>,

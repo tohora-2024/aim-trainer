@@ -158,7 +158,6 @@ button {
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease;
-
 }
 
 .player-details {
@@ -177,9 +176,18 @@ button {
   color: #FFFFFF; 
 }
 
+.time-taken-container {
+  display: flex;
+  flex-direction: column;
+}
 
 .player-score {
   color: #FFFFFF; 
+}
+
+.player-time-taken {
+  color: #FFFFFF;
+  margin-left: auto;
 }
 
 .game-details {
@@ -317,4 +325,8 @@ button {
     display: block;
     width: 200px;
   } 
+}
+
+.hidden {
+  display: none;
 }

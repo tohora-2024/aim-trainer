@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Link } from 'react-router-dom'
 import '../styles/index.scss'
 import { HitCounter } from './HitCounter'
@@ -5,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
 
 interface HitTillYouMissProps {
-  onStartGame: () => void
   selectedGameMode: string
 }
 
@@ -19,8 +19,17 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
   const navigate = useNavigate()
   const [hitCount, setHitCount] = useState(0)
   const hitCountRef = useRef(0)
+  const [elapsedTime, setElapsedTime] = useState<{
+    minutes: number
+    seconds: number
+  }>({ minutes: 0, seconds: 0 })
+  const startTimeRef = useRef<number | null>(null)
 
   const handleCellClick = (row: number, col: number) => {
+    if (!startTimeRef.current) {
+      startTimeRef.current = Date.now()
+      requestAnimationFrame(updateTimer)
+    }
     if (targetCell.row === row && targetCell.col === col) {
       const newTargetCell = getRandomCell()
       setTargetCell(newTargetCell)
@@ -28,14 +37,26 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       hitCountRef.current++
     } else {
       navigate(`/add-score/${selectedGameMode}`, {
-        state: { hitCount: hitCountRef.current, selectedGameMode },
+        state: {
+          elapsedTime: elapsedTime,
+          hitCount: hitCountRef.current,
+          selectedGameMode,
+        },
       })
     }
   }
 
+  // setTimeout(function () {
+  //   console.log(elapsedTime)
+  // }, 5000)
+
   const handleContainerClick = () => {
     navigate(`/add-score/${selectedGameMode}`, {
-      state: { hitCount: hitCountRef.current, selectedGameMode },
+      state: {
+        elapsedTime: elapsedTime,
+        hitCount: hitCountRef.current,
+        selectedGameMode,
+      },
     })
   }
 
@@ -45,6 +66,19 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
     return { row: randomRow, col: randomCol }
   }
 
+  const updateTimer = () => {
+    if (startTimeRef.current) {
+      const currentTime = Date.now()
+      const elapsedTimeInSeconds = Math.floor(
+        (currentTime - startTimeRef.current) / 1000,
+      )
+      const minutes = Math.floor(elapsedTimeInSeconds / 60)
+      const seconds = elapsedTimeInSeconds % 60
+      setElapsedTime({ minutes, seconds })
+      requestAnimationFrame(updateTimer)
+    }
+  }
+
   const gridCells = []
 
   for (let row = 0; row < numRows; row++) {
@@ -52,11 +86,10 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
       const isTarget =
         targetCell && targetCell.row === row && targetCell.col === col
       gridCells.push(
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
         <div
           key={`${row}-${col}`}
           className="grid-cell"
-          onClick={(event) => {
+          onClick={() => {
             handleCellClick(row, col)
           }}
           tabIndex={0}
@@ -81,6 +114,10 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
         <Link to={`/leaderboard/${selectedGameMode}`}>
           <button>Leaderboard</button>
         </Link>
+        <div className="time-container">
+          <strong className="text-grid">Time elapsed: </strong>
+          {elapsedTime.minutes} minutes {elapsedTime.seconds} seconds.
+        </div>
       </div>
       <div className="hit-count-container">
         <HitCounter hitCount={hitCount} />
@@ -92,7 +129,6 @@ function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
             return
           }
           if (event.target.classList.contains('grid-container')) {
-            console.log(event.target)
             handleContainerClick()
           }
         }}

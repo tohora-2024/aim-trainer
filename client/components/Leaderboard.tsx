@@ -24,7 +24,15 @@ export default function Leaderboard() {
             <div key={player?.playerId} className="player-info">
               <div className="player-details">
                 <p className="player-name">Player: {player?.playerName}</p>
+
                 <p className="player-score">Score: {player?.playerScore}</p>
+              </div>
+              <div className="time-taken-container">
+                {player.gameModeId === 4 && (
+                  <p className="player-time-taken">
+                    Time Taken: {player.timeTaken}
+                  </p>
+                )}
               </div>
             </div>
           ))}
