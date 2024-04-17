@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useAddPlayer } from '../hooks/useHooks.ts'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import spongebob from '/audio/spongebob-fail.mp3'
+import gameOver from '/audio/game-over.mp3'
 import { buttonClickAudio } from './PlayAudio'
 
 export default function AddNameForm() {
@@ -40,7 +40,7 @@ export default function AddNameForm() {
     <>
       <audio autoPlay>
         <track kind="captions"></track>
-        <source src={spongebob}></source>
+        <source src={gameOver}></source>
       </audio>
       <div className="form-container">
         <h2>Your score: {score}</h2>

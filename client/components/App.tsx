@@ -13,7 +13,6 @@ function App() {
           </button>
         </Link>
       </div>
-
       <Outlet />
     </>
   )
