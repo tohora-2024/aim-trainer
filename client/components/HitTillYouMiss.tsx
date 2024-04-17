@@ -9,10 +9,7 @@ interface HitTillYouMissProps {
   selectedGameMode: string
 }
 
-function HitTillYouMiss({
-  onStartGame,
-  selectedGameMode,
-}: HitTillYouMissProps) {
+function HitTillYouMiss({ selectedGameMode }: HitTillYouMissProps) {
   const numRows = 9
   const numCols = 10
   const [targetCell, setTargetCell] = useState<{ row: number; col: number }>({
@@ -23,25 +20,23 @@ function HitTillYouMiss({
   const [hitCount, setHitCount] = useState(0)
   const hitCountRef = useRef(0)
 
-  const handleStartButtonClick = () => {
-    onStartGame()
-  }
-
   const handleCellClick = (row: number, col: number) => {
     if (targetCell.row === row && targetCell.col === col) {
       const newTargetCell = getRandomCell()
       setTargetCell(newTargetCell)
       setHitCount(hitCount + 1)
       hitCountRef.current++
-    }
-  }
-
-  const handleContainerClick = () => {
-    if (!(targetCell.row === 0 && targetCell.col === 0)) {
+    } else {
       navigate(`/leaderboard/${selectedGameMode}`, {
         state: { hitCount: hitCountRef.current, selectedGameMode },
       })
     }
+  }
+
+  const handleContainerClick = () => {
+    navigate(`/leaderboard/${selectedGameMode}`, {
+      state: { hitCount: hitCountRef.current, selectedGameMode },
+    })
   }
 
   const getRandomCell = () => {
@@ -61,7 +56,9 @@ function HitTillYouMiss({
         <div
           key={`${row}-${col}`}
           className="grid-cell"
-          onClick={() => handleCellClick(row, col)}
+          onClick={(event) => {
+            handleCellClick(row, col)
+          }}
           tabIndex={0}
           role="button"
         >
@@ -81,7 +78,6 @@ function HitTillYouMiss({
     <>
       <div className="button-container">
         <p>Click the target to begin</p>
-        <button onClick={handleStartButtonClick}>Start Game</button>
         <Link to={`/leaderboard/${selectedGameMode}`}>
           <button>Leaderboard</button>
         </Link>
@@ -91,7 +87,15 @@ function HitTillYouMiss({
       </div>
       <div
         className="grid-container"
-        onClick={handleContainerClick}
+        onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+          if (!(event.target instanceof HTMLElement)) {
+            return
+          }
+          if (event.target.classList.contains('grid-container')) {
+            console.log(event.target)
+            handleContainerClick()
+          }
+        }}
         role="button"
         tabIndex={0}
       >
