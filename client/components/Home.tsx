@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { startClickAudio } from './PlayAudio'
 
 export default function Home() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -7,6 +8,7 @@ export default function Home() {
 
   const handleGameModeSelect = (gameMode: string) => {
     setSelectedGameMode(gameMode)
+    startClickAudio()
   }
   return (
     <>
@@ -23,6 +25,11 @@ export default function Home() {
         <Link to="3">
           <button onClick={() => handleGameModeSelect('3')}>
             Classic (3 minutes)
+          </button>
+        </Link>
+        <Link to="4">
+          <button onClick={() => handleGameModeSelect('4')}>
+            Hit Till You Miss
           </button>
         </Link>
       </div>

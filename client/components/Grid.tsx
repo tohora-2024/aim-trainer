@@ -3,6 +3,7 @@ import '../styles/index.scss'
 import { HitCounter } from './HitCounter'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+import { buttonClickAudio, targetClickAudio } from './PlayAudio'
 
 interface GridProps {
   onStartGame: () => void
@@ -47,6 +48,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
   }, [timerStarted, navigate, selectedGameMode, duration, hitCountRef])
 
   const handleStartButtonClick = () => {
+    buttonClickAudio()
     if (!timerStarted) {
       setTimerStarted(true)
     }
@@ -62,6 +64,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
       setHitCount(hitCount + 1)
       hitCountRef.current++
       onStartGame()
+      targetClickAudio()
     }
   }
 
@@ -112,7 +115,7 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
           Start Timer
         </button>
         <Link to={`/leaderboard/${selectedGameMode}`}>
-          <button>Leaderboard</button>
+          <button onClick={() => buttonClickAudio()}>Leaderboard</button>
         </Link>
       </div>
       <div className="time-container">
@@ -122,7 +125,9 @@ function Grid({ onStartGame, duration, selectedGameMode }: GridProps) {
       <div className="hit-count-container">
         <HitCounter hitCount={hitCount} />
       </div>
-      <div className="grid-container">{gridCells}</div>
+      <div className="grid-container" data-testid="grid">
+        {gridCells}
+      </div>
     </>
   )
 }

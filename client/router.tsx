@@ -8,6 +8,7 @@ import Grid from './components/Grid'
 import Home from './components/Home'
 import Leaderboard from './components/Leaderboard'
 import AddNameForm from './components/AddNameForm'
+import HitTillYouMiss from './components/HitTillYouMiss'
 
 const router = createBrowserRouter(
   createRoutesFromElements([
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
           <Grid onStartGame={() => {}} duration={180000} selectedGameMode="3" />
         }
       />
+      <Route path="4" element={<HitTillYouMiss selectedGameMode="4" />} />
       <Route path="leaderboard/:id" element={<Leaderboard />} />
       <Route path="add-score/:id" element={<AddNameForm />} />
     </Route>,

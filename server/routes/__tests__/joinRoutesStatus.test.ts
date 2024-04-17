@@ -82,15 +82,15 @@ const dummyData = {
 }
 
 describe('GET /api/v1/player ', () => {
-  it('Should send status 200 for getGameModesAndPlayers', async () => {
-    vi.mocked(db.getGameModesAndPlayers).mockResolvedValue(dummyDataArr)
+  it('Should send status 200 for getAllGameModesAndAllPlayers', async () => {
+    vi.mocked(db.getAllGameModesAndAllPlayers).mockResolvedValue(dummyDataArr)
 
     const res = await request(server).get(`${rootUrl}`)
 
     expect(res.statusCode).toBe(200)
   })
-  it('Should send status 500 getGameModesAndPlayers', async () => {
-    vi.mocked(db.getGameModesAndPlayers).mockRejectedValue(dummyDataArr)
+  it('Should send status 500 getAllGameModesAndAllPlayers', async () => {
+    vi.mocked(db.getAllGameModesAndAllPlayers).mockRejectedValue(dummyDataArr)
 
     const res = await request(server).get(`${rootUrl}`)
 

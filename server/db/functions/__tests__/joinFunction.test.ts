@@ -11,10 +11,9 @@ beforeEach(async () => {
 })
 
 describe('getAllGameModesAndAllPlayers', () => {
-  it('Should get all gamemodes and players', async () => {
+  it('Should get all gamemodes and players from gamemode with id of 1', async () => {
     // Arrange / Act
-    const allGameModesAndAllPlayers =
-      await db.getAllGameModesAndAllPlayers('Classic 1 Minute')
+    const allGameModesAndAllPlayers = await db.getAllGameModesAndAllPlayers(1)
 
     // Assert
     expect(allGameModesAndAllPlayers).toHaveLength(3)
@@ -30,6 +29,16 @@ describe('getGameModeByPlayerId', () => {
     // Assert
     expect(player.playerName).toBe('Joel')
     expect(player.gameModeName).toBe('Classic 1 Minute')
+  })
+})
+
+describe('getGameModesAndPlayers', () => {
+  it('Should get all game modes and players', async () => {
+    const gameModesAndPlayers = await db.getGameModesAndPlayers()
+
+    expect(gameModesAndPlayers).toHaveLength(6)
+    expect(gameModesAndPlayers[3].playerId).toBe(4)
+    expect(gameModesAndPlayers[5].gameModeId).toBe(3)
   })
 })
 
