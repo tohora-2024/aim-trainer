@@ -15,9 +15,6 @@ import Grid from '../Grid'
 
 beforeAll(() => {
   nock.disableNetConnect()
-  // nock('http://example.com')
-  //   .get('/leaderboard')
-  //   .reply(200, { data: 'Leaderboard data' })
 })
 
 beforeEach(() => {
